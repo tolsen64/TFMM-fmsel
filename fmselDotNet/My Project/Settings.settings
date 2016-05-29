@@ -1,0 +1,48 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="CreateTableFMFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CREATE TABLE If NOT EXISTS FMFiles (Filename varchar(255), FileSize INT, MissionName varchar(255), ThiefVersion varchar(255), Author varchar(255), ReleaseDate DATE, Directory varchar(255), InstallFolder varchar(255), Hash varchar(255))</Value>
+    </Setting>
+    <Setting Name="CreateTableInfoFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CREATE TABLE IF NOT EXISTS InfoFiles (FMFilesId INT, Filename varchar(255), Content BLOB)</Value>
+    </Setting>
+    <Setting Name="CreateTriggerFMDelete" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CREATE TRIGGER IF NOT EXISTS FMDelete AFTER DELETE ON FMFiles FOR EACH ROW BEGIN DELETE FROM InfoFiles WHERE FMFilesId = OLD.rowid; END</Value>
+    </Setting>
+    <Setting Name="InsertMissionFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO FMFiles (Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')</Value>
+    </Setting>
+    <Setting Name="DeleteMissionFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DELETE FROM FMFiles WHERE Directory = '{0}' AND Filename = '{1}'</Value>
+    </Setting>
+    <Setting Name="SelectAllFMFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash FROM FMFiles</Value>
+    </Setting>
+    <Setting Name="UpdateFMFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UPDATE FMFiles SET MissionName = '{0}', ThiefVersion = '{1}', Author = '{2}', ReleaseDate = '{3}' WHERE rowid = {4}</Value>
+    </Setting>
+    <Setting Name="SelectFileHash" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT Filename, Hash FROM FMFiles</Value>
+    </Setting>
+    <Setting Name="InsertInfoFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO InfoFiles VALUES ('{0}', '{1}', @bytes)</Value>
+    </Setting>
+    <Setting Name="SelectInfoFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT Filename, Content FROM InfoFiles WHERE FMFilesId = {0}</Value>
+    </Setting>
+    <Setting Name="SelectGameFMFiles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash FROM FMFiles WHERE ThiefVersion = '{0}'</Value>
+    </Setting>
+    <Setting Name="CreateTableUserNotes" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CREATE TABLE IF NOT EXISTS UserNotes (FMFilesId INT NOT NULL PRIMARY KEY, Note TEXT)</Value>
+    </Setting>
+    <Setting Name="SelectUserNotes" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT Note FROM UserNotes WHERE FMFilesId = {0}</Value>
+    </Setting>
+    <Setting Name="UpdateUserNote" Type="System.String" Scope="User">
+      <Value Profile="(Default)">INSERT OR REPLACE INTO UserNotes VALUES ({0}, '{1}')</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
