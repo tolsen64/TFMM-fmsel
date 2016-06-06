@@ -56,9 +56,10 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("CREATE TABLE If NOT EXISTS FMFiles (Filename varchar(255), FileSize INT, MissionN"& _ 
-            "ame varchar(255), ThiefVersion varchar(255), Author varchar(255), ReleaseDate DA"& _ 
-            "TE, Directory varchar(255), InstallFolder varchar(255), Hash varchar(255))")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("CREATE TABLE If NOT EXISTS FMFiles (Ver varchar(255), Filename varchar(255), File"& _ 
+            "Size INT, MissionName varchar(255), Author varchar(255), ReleaseDate DATE, Ratin"& _ 
+            "g INT, Completed varchar(255), FileTypes varchar(255), Directory varchar(255), I"& _ 
+            "nstallFolder varchar(255), Hash varchar(255))")>  _
         Public ReadOnly Property CreateTableFMFiles() As String
             Get
                 Return CType(Me("CreateTableFMFiles"),String)
@@ -87,9 +88,9 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("INSERT INTO FMFiles (Filename, FileSize, MissionName, ThiefVersion, Author, Relea"& _ 
-            "seDate, Directory, InstallFolder, Hash) VALUES ('{0}','{1}','{2}','{3}','{4}','{"& _ 
-            "5}','{6}','{7}','{8}')")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("INSERT INTO FMFiles (Ver, Filename, FileSize, MissionName, Author, ReleaseDate, R"& _ 
+            "ating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES ('{0}','{1}'"& _ 
+            ",'{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')")>  _
         Public ReadOnly Property InsertMissionFile() As String
             Get
                 Return CType(Me("InsertMissionFile"),String)
@@ -107,8 +108,8 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate,"& _ 
-            " Directory, InstallFolder, Hash FROM FMFiles")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT rowid, Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, "& _ 
+            "Completed, FileTypes, Directory, InstallFolder, Hash FROM FMFiles")>  _
         Public ReadOnly Property SelectAllFMFiles() As String
             Get
                 Return CType(Me("SelectAllFMFiles"),String)
@@ -117,8 +118,8 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("UPDATE FMFiles SET MissionName = '{0}', ThiefVersion = '{1}', Author = '{2}', Rel"& _ 
-            "easeDate = '{3}' WHERE rowid = {4}")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("UPDATE FMFiles SET Ver = '{0}', MissionName = '{1}', Author = '{2}', ReleaseDate "& _ 
+            "= '{3}', Rating = {4}, Completed = '{5}' WHERE rowid = {6}")>  _
         Public ReadOnly Property UpdateFMFiles() As String
             Get
                 Return CType(Me("UpdateFMFiles"),String)
@@ -154,8 +155,9 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate,"& _ 
-            " Directory, InstallFolder, Hash FROM FMFiles WHERE ThiefVersion = '{0}'")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("SELECT rowid, Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, "& _ 
+            "Completed, FileTypes, Directory, InstallFolder, Hash FROM FMFiles WHERE Ver = '{"& _ 
+            "0}'")>  _
         Public ReadOnly Property SelectGameFMFiles() As String
             Get
                 Return CType(Me("SelectGameFMFiles"),String)
@@ -181,16 +183,73 @@ Namespace My
             End Get
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("INSERT OR REPLACE INTO UserNotes VALUES ({0}, '{1}')")>  _
-        Public Property UpdateUserNote() As String
+        Public ReadOnly Property UpdateUserNote() As String
             Get
                 Return CType(Me("UpdateUserNote"),String)
             End Get
-            Set
-                Me("UpdateUserNote") = value
-            End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("TIPS:"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"1. Edit MissionName, Author, ReleaseDate by clicking in the cell and sta"& _ 
+            "rt typing, or click 2-3 times for it to enter edit mode. Changes are saved as yo"& _ 
+            "u click out of the row."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"2. If the detected mission type (Ver column) is incorre"& _ 
+            "ct, double-click to change it."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"3. Click on the stars in the Rating column to se"& _ 
+            "t your rating for each mission. Click the very left edge of the first star to se"& _ 
+            "t it to zero."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"4. Use the Completed column to keep track what what missions you'"& _ 
+            "ve completed and what difficulty you completed. Choose yes if the mission does n"& _ 
+            "ot have difficulty levels."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"5. Use the User Notes tab for each mission to keep n"& _ 
+            "otes about that mission."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"6. Type in the Filter textbox to search by FileName, M"& _ 
+            "issionName, and Author. Clear the textbox to show all missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"7. Click the Sy"& _ 
+            "nc button after missions have been added or deleted from your archive folder to "& _ 
+            "update the mission list."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"8. Click the down-arrow next to the Play Fan Mission b"& _ 
+            "utton to play the original missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"9. Closing the program by using the Exit m"& _ 
+            "enu item or closing the main window will exit without launching the game.")>  _
+        Public ReadOnly Property AboutText() As String
+            Get
+                Return CType(Me("AboutText"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<ArrayOfString xmlns:xsi=""http://www.w3."& _ 
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <s"& _ 
+            "tring>0 - (Default)</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>1 - Lord Bafford's Manor</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <st"& _ 
+            "ring>2 - Break from Cragscleft Prison</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>3 - Down in the Boneho"& _ 
+            "ard</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>4 - Assassins</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>5 - Thieves Guild</str"& _ 
+            "ing>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>6 - The Sword</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>7 - The Haunted Cathedral</str"& _ 
+            "ing>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>8 - The Mage Towers</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>9 - The Lost City</strin"& _ 
+            "g>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>10 - Song of the Caverns</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>11 - Undercover</stri"& _ 
+            "ng>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>12 - Return to the Cathedral</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>13 - Escape!</st"& _ 
+            "ring>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>14 - Strange Bedfellows</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>15 - Into the Maw o"& _ 
+            "f Chaos</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>16 - Blooper Reel</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</ArrayOfString>")>  _
+        Public ReadOnly Property T1OrigMissions() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("T1OrigMissions"),Global.System.Collections.Specialized.StringCollection)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<ArrayOfString xmlns:xsi=""http://www.w3."& _ 
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <s"& _ 
+            "tring>0 - (Default)</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>1 - Running Interference</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <st"& _ 
+            "ring>2 - Shipping ... and Receiving</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>3 - Framed</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <"& _ 
+            "string>4 - Ambush!</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>5 - Eavesdropping</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>6 -"& _ 
+            " First City Bank and Trust</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>7 - Blackmail</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string"& _ 
+            ">8 - Trace the Courier</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>9 - Trail of Blood</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <strin"& _ 
+            "g>10 - Life of the Party</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>11 - Precious Cargo</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <st"& _ 
+            "ring>12 - Kidnap</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>13 - Casing the Joint</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>1"& _ 
+            "4 - Masks</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <string>15 - Sabotage at Soulforge</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</ArrayOfStri"& _ 
+            "ng>")>  _
+        Public ReadOnly Property T2OrigMissions() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("T2OrigMissions"),Global.System.Collections.Specialized.StringCollection)
+            End Get
         End Property
     End Class
 End Namespace

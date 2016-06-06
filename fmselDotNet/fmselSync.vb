@@ -3,8 +3,6 @@ Imports System.IO
 Imports map = BoycoT.TFMM.MissionArchiveParser
 
 Module fmselSync
-    'TODO: Rewrite as class which contains everything needed for updating the database.
-    '       Add event to update main grid if program is still running.
 
     Public Event SyncInfo(sender As Object, e As EventArgs)
 
@@ -24,30 +22,30 @@ Module fmselSync
                            HashList.Sort()
 
                            For Each fmdir As String In FMDirs
-                               FMArchives.AddRange(New DirectoryInfo(fmdir).GetFiles("*.zip", SearchOption.AllDirectories))
+                               FMArchives.AddRange(New DirectoryInfo(fmdir).GetFilesByExtensions(".zip", ".7z", ".rar"))
                            Next
 
                            For i As Integer = 0 To FMArchives.Count - 1
                                If Not FileList.Contains(FMArchives(i).Name) Then
-                                   RaiseEvent SyncInfo(Nothing, New SyncInfoEventArgs With {.FileCount = FMArchives.Count, .Filename = FMArchives(i).Name, .Index = i - 1})
+                                   RaiseEvent SyncInfo(Nothing, New SyncInfoEventArgs With {.FileCount = FMArchives.Count, .Filename = FMArchives(i).Name, .Index = i - 1, .mi = Nothing})
                                    Dim mi As map.MissionInfo = map.ParseMissionArchive(FMArchives(i).FullName)
                                    If Not HashList.Contains(mi.MD5) Then
                                        InsertNewMissionFile(mi)
-                                       Dim dr As DataRow = dtMissions.NewRow
-                                       dr("Filename") = mi.ArchiveFile.Name
-                                       dr("FileSize") = mi.ArchiveFile.Length
-                                       dr("MissionName") = mi.Title
-                                       dr("Author") = mi.Author
-                                       dr("ReleaseDate") = mi.ReleaseDate
-                                       dr("Directory") = mi.ArchiveFile.DirectoryName
-                                       dr("InstallFolder") = mi.InstallDirName
-                                       dtMissions.Rows.Add(dr)
-                                       dtMissions.AcceptChanges()
+                                       RaiseEvent SyncInfo(Nothing, New SyncInfoEventArgs With {.FileCount = FMArchives.Count, .Filename = FMArchives(i).Name, .Index = i, .mi = mi})
                                    End If
                                End If
                                RaiseEvent SyncInfo(Nothing, New SyncInfoEventArgs With {.FileCount = FMArchives.Count, .Filename = FMArchives(i).Name, .Index = i})
                            Next
                        End Sub)
     End Sub
+
+    <System.Runtime.CompilerServices.Extension>
+    Public Function GetFilesByExtensions(dir As DirectoryInfo, ParamArray extensions As String()) As IEnumerable(Of FileInfo)
+        If extensions Is Nothing Then
+            Throw New ArgumentNullException("extensions")
+        End If
+        Dim files As IEnumerable(Of FileInfo) = dir.EnumerateFiles()
+        Return files.Where(Function(f) extensions.Contains(f.Extension))
+    End Function
 
 End Module

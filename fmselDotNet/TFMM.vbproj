@@ -54,13 +54,13 @@
       <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MissionArchiveParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\DROBO5N\Public\Terry\Visual Studio .NET Projects\TFMM\MissionArchiveParser\MissionArchiveParser\bin\Debug\MissionArchiveParser.dll</HintPath>
-    </Reference>
     <Reference Include="RGiesecke.DllExport.Metadata, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8f52d83c1a22df51, processorArchitecture=MSIL">
       <HintPath>..\packages\UnmanagedExports.1.2.7\lib\net\RGiesecke.DllExport.Metadata.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL">
+      <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,13 +91,26 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox1.Designer.vb">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CustomEventArgs.vb" />
+    <Compile Include="dlgGameVer.Designer.vb">
+      <DependentUpon>dlgGameVer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dlgGameVer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dlgSettings.Designer.vb">
       <DependentUpon>dlgSettings.vb</DependentUpon>
     </Compile>
     <Compile Include="dlgSettings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FFMpeg.vb" />
     <Compile Include="fmsel.vb" />
     <Compile Include="fmselCfg.vb" />
     <Compile Include="fmselGlobals.vb" />
@@ -123,11 +136,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RatingColumn.vb" />
     <Compile Include="SQLite.vb" />
     <Compile Include="uncPath.vb" />
     <Compile Include="WinApiDialogs.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgGameVer.resx">
+      <DependentUpon>dlgGameVer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dlgSettings.resx">
       <DependentUpon>dlgSettings.vb</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +200,85 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\starhot5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SS2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\T1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\T2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\T3_Blue_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55374-thief-ii-the-metal-age-windows-front-cover_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\73474-thief-the-dark-project-windows-front-cover_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\systemshock-2_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thief_Deadly_Shadows_boxart_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ffmpeg.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TFMM\MissionArchiveParser\MissionArchiveParser\MissionArchiveParser.vbproj">
+      <Project>{3c83e5e0-c132-4671-a789-d5b8e5e419b3}</Project>
+      <Name>MissionArchiveParser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="7z.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="../packages/UnmanagedExports.1.2.7/tools/RGiesecke.DllExport.targets" Condition="Exists('../packages/UnmanagedExports.1.2.7/tools/RGiesecke.DllExport.targets')" />

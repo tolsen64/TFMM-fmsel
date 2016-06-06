@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -44,22 +44,13 @@ Partial Class frmMain
         Me.cboGamesys = New System.Windows.Forms.ToolStripComboBox()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.gridFMs = New System.Windows.Forms.DataGridView()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colVer = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colFileSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabsDocs = New System.Windows.Forms.TabControl()
         Me.tabDoc1 = New System.Windows.Forms.TabPage()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPlayFanMission = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMaxCash = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SettingsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
@@ -67,8 +58,25 @@ Partial Class frmMain
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAllMissions = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOnlyGameMissions = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TroubleshootingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowGameInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colVer = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colFileName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFileSize = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colMissionName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colAuthor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colReleased = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colRating = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colCompleted = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.colFileTypes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colDirectory = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colInstallFolder = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colHash = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabsMain.SuspendLayout()
         Me.tabFanMissions.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -233,7 +241,7 @@ Partial Class frmMain
         Me.gridFMs.AllowUserToAddRows = False
         Me.gridFMs.AllowUserToDeleteRows = False
         Me.gridFMs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridFMs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column9, Me.colVer, Me.Column1, Me.colFileSize, Me.Column2, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
+        Me.gridFMs.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colId, Me.colVer, Me.colFileName, Me.colFileSize, Me.colMissionName, Me.colAuthor, Me.colReleased, Me.colRating, Me.colCompleted, Me.colFileTypes, Me.colDirectory, Me.colInstallFolder, Me.colHash})
         Me.gridFMs.Dock = System.Windows.Forms.DockStyle.Fill
         Me.gridFMs.Location = New System.Drawing.Point(0, 0)
         Me.gridFMs.MultiSelect = False
@@ -242,87 +250,6 @@ Partial Class frmMain
         Me.gridFMs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.gridFMs.Size = New System.Drawing.Size(622, 668)
         Me.gridFMs.TabIndex = 0
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "rowid"
-        Me.Column9.HeaderText = "id"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        Me.Column9.Visible = False
-        '
-        'colVer
-        '
-        Me.colVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.colVer.DataPropertyName = "ThiefVersion"
-        Me.colVer.HeaderText = "Ver"
-        Me.colVer.Name = "colVer"
-        Me.colVer.Width = 5
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.Column1.DataPropertyName = "Filename"
-        Me.Column1.HeaderText = "FileName"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 5
-        '
-        'colFileSize
-        '
-        Me.colFileSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.colFileSize.DataPropertyName = "FileSize"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.colFileSize.DefaultCellStyle = DataGridViewCellStyle1
-        Me.colFileSize.HeaderText = "FileSize"
-        Me.colFileSize.Name = "colFileSize"
-        Me.colFileSize.ReadOnly = True
-        Me.colFileSize.Width = 5
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "MissionName"
-        Me.Column2.HeaderText = "MissionName"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 200
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "Author"
-        Me.Column4.HeaderText = "Author"
-        Me.Column4.Name = "Column4"
-        Me.Column4.Width = 200
-        '
-        'Column5
-        '
-        Me.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
-        Me.Column5.DataPropertyName = "ReleaseDate"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column5.HeaderText = "Released"
-        Me.Column5.Name = "Column5"
-        Me.Column5.Width = 5
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "Directory"
-        Me.Column6.HeaderText = "Directory"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "InstallFolder"
-        Me.Column7.HeaderText = "InstallFolder"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column8
-        '
-        Me.Column8.DataPropertyName = "Hash"
-        Me.Column8.HeaderText = "Hash"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
         '
         'tabsDocs
         '
@@ -346,7 +273,7 @@ Partial Class frmMain
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.TroubleshootingToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1264, 24)
@@ -355,7 +282,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.mnuMaxCash, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -371,6 +298,14 @@ Partial Class frmMain
         Me.mnuPlayOriginalMissions.Name = "mnuPlayOriginalMissions"
         Me.mnuPlayOriginalMissions.Size = New System.Drawing.Size(190, 22)
         Me.mnuPlayOriginalMissions.Text = "Play Original Missions"
+        '
+        'mnuMaxCash
+        '
+        Me.mnuMaxCash.CheckOnClick = True
+        Me.mnuMaxCash.Name = "mnuMaxCash"
+        Me.mnuMaxCash.Size = New System.Drawing.Size(190, 22)
+        Me.mnuMaxCash.Text = "Max Cash"
+        Me.mnuMaxCash.Visible = False
         '
         'ToolStripMenuItem1
         '
@@ -413,6 +348,19 @@ Partial Class frmMain
         Me.mnuOnlyGameMissions.Size = New System.Drawing.Size(165, 22)
         Me.mnuOnlyGameMissions.Text = "Only {0} Missions"
         '
+        'TroubleshootingToolStripMenuItem
+        '
+        Me.TroubleshootingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowGameInfoToolStripMenuItem})
+        Me.TroubleshootingToolStripMenuItem.Name = "TroubleshootingToolStripMenuItem"
+        Me.TroubleshootingToolStripMenuItem.Size = New System.Drawing.Size(106, 20)
+        Me.TroubleshootingToolStripMenuItem.Text = "Troubleshooting"
+        '
+        'ShowGameInfoToolStripMenuItem
+        '
+        Me.ShowGameInfoToolStripMenuItem.Name = "ShowGameInfoToolStripMenuItem"
+        Me.ShowGameInfoToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.ShowGameInfoToolStripMenuItem.Text = "Show Game Info"
+        '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
@@ -423,8 +371,132 @@ Partial Class frmMain
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
-        Me.AboutToolStripMenuItem.Text = "About"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
+        Me.AboutToolStripMenuItem.Text = "About && Tips"
+        '
+        'DataGridViewImageColumn1
+        '
+        Me.DataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.DataGridViewImageColumn1.DataPropertyName = "Ver"
+        Me.DataGridViewImageColumn1.HeaderText = "Ver"
+        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
+        Me.DataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'DataGridViewImageColumn2
+        '
+        Me.DataGridViewImageColumn2.DataPropertyName = "Rating"
+        Me.DataGridViewImageColumn2.HeaderText = "Rating"
+        Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
+        Me.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'colId
+        '
+        Me.colId.DataPropertyName = "rowid"
+        Me.colId.HeaderText = "id"
+        Me.colId.Name = "colId"
+        Me.colId.ReadOnly = True
+        Me.colId.Visible = False
+        '
+        'colVer
+        '
+        Me.colVer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.colVer.DataPropertyName = "Ver"
+        Me.colVer.HeaderText = "Ver"
+        Me.colVer.Name = "colVer"
+        Me.colVer.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.colVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.colVer.Width = 5
+        '
+        'colFileName
+        '
+        Me.colFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.colFileName.DataPropertyName = "Filename"
+        Me.colFileName.HeaderText = "FileName"
+        Me.colFileName.Name = "colFileName"
+        Me.colFileName.ReadOnly = True
+        Me.colFileName.Width = 5
+        '
+        'colFileSize
+        '
+        Me.colFileSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.colFileSize.DataPropertyName = "FileSize"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colFileSize.DefaultCellStyle = DataGridViewCellStyle1
+        Me.colFileSize.HeaderText = "FileSize"
+        Me.colFileSize.Name = "colFileSize"
+        Me.colFileSize.ReadOnly = True
+        Me.colFileSize.Width = 5
+        '
+        'colMissionName
+        '
+        Me.colMissionName.DataPropertyName = "MissionName"
+        Me.colMissionName.HeaderText = "MissionName"
+        Me.colMissionName.Name = "colMissionName"
+        Me.colMissionName.Width = 200
+        '
+        'colAuthor
+        '
+        Me.colAuthor.DataPropertyName = "Author"
+        Me.colAuthor.HeaderText = "Author"
+        Me.colAuthor.Name = "colAuthor"
+        Me.colAuthor.Width = 200
+        '
+        'colReleased
+        '
+        Me.colReleased.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader
+        Me.colReleased.DataPropertyName = "ReleaseDate"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colReleased.DefaultCellStyle = DataGridViewCellStyle2
+        Me.colReleased.HeaderText = "Released"
+        Me.colReleased.Name = "colReleased"
+        Me.colReleased.Width = 5
+        '
+        'colRating
+        '
+        Me.colRating.DataPropertyName = "Rating"
+        Me.colRating.HeaderText = "Rating"
+        Me.colRating.Name = "colRating"
+        Me.colRating.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.colRating.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'colCompleted
+        '
+        Me.colCompleted.DataPropertyName = "Completed"
+        Me.colCompleted.HeaderText = "Completed"
+        Me.colCompleted.Items.AddRange(New Object() {"No", "Yes", "Normal", "Hard", "Expert"})
+        Me.colCompleted.Name = "colCompleted"
+        Me.colCompleted.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.colCompleted.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'colFileTypes
+        '
+        Me.colFileTypes.DataPropertyName = "FileTypes"
+        Me.colFileTypes.HeaderText = "FileTypes"
+        Me.colFileTypes.Name = "colFileTypes"
+        Me.colFileTypes.ReadOnly = True
+        '
+        'colDirectory
+        '
+        Me.colDirectory.DataPropertyName = "Directory"
+        Me.colDirectory.HeaderText = "Directory"
+        Me.colDirectory.Name = "colDirectory"
+        Me.colDirectory.ReadOnly = True
+        '
+        'colInstallFolder
+        '
+        Me.colInstallFolder.DataPropertyName = "InstallFolder"
+        Me.colInstallFolder.HeaderText = "InstallFolder"
+        Me.colInstallFolder.Name = "colInstallFolder"
+        Me.colInstallFolder.ReadOnly = True
+        '
+        'colHash
+        '
+        Me.colHash.DataPropertyName = "Hash"
+        Me.colHash.HeaderText = "Hash"
+        Me.colHash.Name = "colHash"
+        Me.colHash.ReadOnly = True
         '
         'frmMain
         '
@@ -487,14 +559,22 @@ Partial Class frmMain
     Friend WithEvents ViewToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuAllMissions As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuOnlyGameMissions As Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Column9 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colVer As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TroubleshootingToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShowGameInfoToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DataGridViewImageColumn1 As Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents DataGridViewImageColumn2 As Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents mnuMaxCash As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents colId As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colVer As Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents colFileName As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colFileSize As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colMissionName As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colAuthor As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colReleased As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colRating As Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents colCompleted As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents colFileTypes As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colDirectory As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colInstallFolder As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colHash As Windows.Forms.DataGridViewTextBoxColumn
 End Class

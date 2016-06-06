@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="CreateTableFMFiles" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">CREATE TABLE If NOT EXISTS FMFiles (Filename varchar(255), FileSize INT, MissionName varchar(255), ThiefVersion varchar(255), Author varchar(255), ReleaseDate DATE, Directory varchar(255), InstallFolder varchar(255), Hash varchar(255))</Value>
+      <Value Profile="(Default)">CREATE TABLE If NOT EXISTS FMFiles (Ver varchar(255), Filename varchar(255), FileSize INT, MissionName varchar(255), Author varchar(255), ReleaseDate DATE, Rating INT, Completed varchar(255), FileTypes varchar(255), Directory varchar(255), InstallFolder varchar(255), Hash varchar(255))</Value>
     </Setting>
     <Setting Name="CreateTableInfoFiles" Type="System.String" Scope="Application">
       <Value Profile="(Default)">CREATE TABLE IF NOT EXISTS InfoFiles (FMFilesId INT, Filename varchar(255), Content BLOB)</Value>
@@ -12,16 +12,16 @@
       <Value Profile="(Default)">CREATE TRIGGER IF NOT EXISTS FMDelete AFTER DELETE ON FMFiles FOR EACH ROW BEGIN DELETE FROM InfoFiles WHERE FMFilesId = OLD.rowid; END</Value>
     </Setting>
     <Setting Name="InsertMissionFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">INSERT INTO FMFiles (Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')</Value>
+      <Value Profile="(Default)">INSERT INTO FMFiles (Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')</Value>
     </Setting>
     <Setting Name="DeleteMissionFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">DELETE FROM FMFiles WHERE Directory = '{0}' AND Filename = '{1}'</Value>
     </Setting>
     <Setting Name="SelectAllFMFiles" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash FROM FMFiles</Value>
+      <Value Profile="(Default)">SELECT rowid, Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, Completed, FileTypes, Directory, InstallFolder, Hash FROM FMFiles</Value>
     </Setting>
     <Setting Name="UpdateFMFiles" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">UPDATE FMFiles SET MissionName = '{0}', ThiefVersion = '{1}', Author = '{2}', ReleaseDate = '{3}' WHERE rowid = {4}</Value>
+      <Value Profile="(Default)">UPDATE FMFiles SET Ver = '{0}', MissionName = '{1}', Author = '{2}', ReleaseDate = '{3}', Rating = {4}, Completed = '{5}' WHERE rowid = {6}</Value>
     </Setting>
     <Setting Name="SelectFileHash" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT Filename, Hash FROM FMFiles</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">SELECT Filename, Content FROM InfoFiles WHERE FMFilesId = {0}</Value>
     </Setting>
     <Setting Name="SelectGameFMFiles" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">SELECT rowid, Filename, FileSize, MissionName, ThiefVersion, Author, ReleaseDate, Directory, InstallFolder, Hash FROM FMFiles WHERE ThiefVersion = '{0}'</Value>
+      <Value Profile="(Default)">SELECT rowid, Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, Completed, FileTypes, Directory, InstallFolder, Hash FROM FMFiles WHERE Ver = '{0}'</Value>
     </Setting>
     <Setting Name="CreateTableUserNotes" Type="System.String" Scope="Application">
       <Value Profile="(Default)">CREATE TABLE IF NOT EXISTS UserNotes (FMFilesId INT NOT NULL PRIMARY KEY, Note TEXT)</Value>
@@ -41,8 +41,64 @@
     <Setting Name="SelectUserNotes" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT Note FROM UserNotes WHERE FMFilesId = {0}</Value>
     </Setting>
-    <Setting Name="UpdateUserNote" Type="System.String" Scope="User">
+    <Setting Name="UpdateUserNote" Type="System.String" Scope="Application">
       <Value Profile="(Default)">INSERT OR REPLACE INTO UserNotes VALUES ({0}, '{1}')</Value>
+    </Setting>
+    <Setting Name="AboutText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">TIPS:
+
+1. Edit MissionName, Author, ReleaseDate by clicking in the cell and start typing, or click 2-3 times for it to enter edit mode. Changes are saved as you click out of the row.
+2. If the detected mission type (Ver column) is incorrect, double-click to change it.
+3. Click on the stars in the Rating column to set your rating for each mission. Click the very left edge of the first star to set it to zero.
+4. Use the Completed column to keep track what what missions you've completed and what difficulty you completed. Choose yes if the mission does not have difficulty levels.
+5. Use the User Notes tab for each mission to keep notes about that mission.
+6. Type in the Filter textbox to search by FileName, MissionName, and Author. Clear the textbox to show all missions.
+7. Click the Sync button after missions have been added or deleted from your archive folder to update the mission list.
+8. Click the down-arrow next to the Play Fan Mission button to play the original missions.
+9. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.</Value>
+    </Setting>
+    <Setting Name="T1OrigMissions" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;0 - (Default)&lt;/string&gt;
+  &lt;string&gt;1 - Lord Bafford's Manor&lt;/string&gt;
+  &lt;string&gt;2 - Break from Cragscleft Prison&lt;/string&gt;
+  &lt;string&gt;3 - Down in the Bonehoard&lt;/string&gt;
+  &lt;string&gt;4 - Assassins&lt;/string&gt;
+  &lt;string&gt;5 - Thieves Guild&lt;/string&gt;
+  &lt;string&gt;6 - The Sword&lt;/string&gt;
+  &lt;string&gt;7 - The Haunted Cathedral&lt;/string&gt;
+  &lt;string&gt;8 - The Mage Towers&lt;/string&gt;
+  &lt;string&gt;9 - The Lost City&lt;/string&gt;
+  &lt;string&gt;10 - Song of the Caverns&lt;/string&gt;
+  &lt;string&gt;11 - Undercover&lt;/string&gt;
+  &lt;string&gt;12 - Return to the Cathedral&lt;/string&gt;
+  &lt;string&gt;13 - Escape!&lt;/string&gt;
+  &lt;string&gt;14 - Strange Bedfellows&lt;/string&gt;
+  &lt;string&gt;15 - Into the Maw of Chaos&lt;/string&gt;
+  &lt;string&gt;16 - Blooper Reel&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="T2OrigMissions" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;0 - (Default)&lt;/string&gt;
+  &lt;string&gt;1 - Running Interference&lt;/string&gt;
+  &lt;string&gt;2 - Shipping ... and Receiving&lt;/string&gt;
+  &lt;string&gt;3 - Framed&lt;/string&gt;
+  &lt;string&gt;4 - Ambush!&lt;/string&gt;
+  &lt;string&gt;5 - Eavesdropping&lt;/string&gt;
+  &lt;string&gt;6 - First City Bank and Trust&lt;/string&gt;
+  &lt;string&gt;7 - Blackmail&lt;/string&gt;
+  &lt;string&gt;8 - Trace the Courier&lt;/string&gt;
+  &lt;string&gt;9 - Trail of Blood&lt;/string&gt;
+  &lt;string&gt;10 - Life of the Party&lt;/string&gt;
+  &lt;string&gt;11 - Precious Cargo&lt;/string&gt;
+  &lt;string&gt;12 - Kidnap&lt;/string&gt;
+  &lt;string&gt;13 - Casing the Joint&lt;/string&gt;
+  &lt;string&gt;14 - Masks&lt;/string&gt;
+  &lt;string&gt;15 - Sabotage at Soulforge&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

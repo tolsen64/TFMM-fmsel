@@ -6,6 +6,22 @@ Imports System.IO
 
 Module tfmsGlobals
 
+    Public Enum cols
+        id
+        Ver
+        FileName
+        FileSize
+        MissionName
+        Author
+        Released
+        Rating
+        Completed
+        FileTypes
+        Directory
+        InstallFolder
+        Hash
+    End Enum
+
     Public Function FormatFileSize(ByVal FileSizeBytes As Long) As String
         Dim sizeTypes() As String = {"b", "Kb", "Mb", "Gb"}
         Dim Len As Decimal = FileSizeBytes

@@ -63,7 +63,7 @@ Public Module fmsel
         Return FMSelReturnValue
     End Function
 
-    Private Function ShowMainWindow()
+    Private Sub ShowMainWindow()
         ' This is necessary when our DLL is not installed in the same folder as the game.
         If AppPath <> GamePath Then
             AddHandler AppDomain.CurrentDomain.AssemblyResolve, AddressOf CurrentDomain_AssemblyResolve
@@ -72,7 +72,7 @@ Public Module fmsel
         With New frmMain
             .ShowDialog()
         End With
-    End Function
+    End Sub
 
     Private Function CurrentDomain_AssemblyResolve(sender As Object, args As ResolveEventArgs) As Assembly
         'MsgBox(sender.GetType.ToString & vbCrLf & vbCrLf & args.RequestingAssembly.ToString & vbCrLf & vbCrLf & args.Name)
@@ -125,6 +125,16 @@ Public Module fmsel
             Dim sName As Byte() = ASCII.GetBytes(value)   'folder name of mission to play
             Marshal.Copy(sName, 0, FMSelData.sName, sName.Length)
         End Set
+    End Property
+
+    ''' <summary>
+    ''' The game version as it is supplied from the game.
+    ''' </summary>
+    ''' <returns></returns>
+    Public ReadOnly Property GameVersionRaw As String
+        Get
+            Return FMSelData.sGameVersion
+        End Get
     End Property
 
     ''' <summary>

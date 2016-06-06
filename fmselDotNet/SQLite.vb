@@ -8,7 +8,7 @@ Module SQLite
     Public dtMissions As DataTable
     Public dvMissions As DataView
 
-    Private dbFile As String = AppPath & "\TFMS.db"
+    Private dbFile As String = AppPath & "\TFMM.db"
     Private ConnStr As String = "DataSource=" & dbFile & ";Version=3;"
 
     Public Sub InitializeDb()
@@ -29,7 +29,7 @@ Module SQLite
         End Using
         dtMissions = GetAllMissionsFromDb()
         dvMissions = New DataView(dtMissions)
-        If Not ViewAllMissions Then dvMissions.RowFilter = "ThiefVersion = '" & GameVersion & "'"
+        If Not ViewAllMissions Then dvMissions.RowFilter = "Ver = '" & GameVersion & "'"
     End Sub
 
     Private Function CreateDbCommand(cmdText As String) As SQLiteCommand
@@ -69,9 +69,9 @@ Module SQLite
         dbExecuteNonQuery(String.Format(My.Settings.UpdateUserNote, rowid, Note.SQLify))
     End Sub
 
-    Public Sub InsertNewMissionFile(mi As map.MissionInfo)
+    Public Sub InsertNewMissionFile(ByRef mi As map.MissionInfo)
         Dim rslt As Integer = 0
-        With CreateDbCommand(String.Format(My.Settings.InsertMissionFile, {mi.ArchiveFile.Name.SQLify, mi.ArchiveFile.Length, mi.Title.SQLify, mi.Game.ToString, mi.Author.SQLify, mi.ReleaseDate.ToString("yyyy-MM-dd"), mi.ArchiveFile.DirectoryName.SQLify, mi.InstallDirName, mi.MD5}))
+        With CreateDbCommand(String.Format(My.Settings.InsertMissionFile, {mi.Game.ToString, mi.ArchiveFile.Name.SQLify, mi.ArchiveFile.Length, mi.Title.SQLify, mi.Author.SQLify, mi.ReleaseDate.ToString("yyyy-MM-dd"), 0, "No", mi.FileTypes, mi.ArchiveFile.DirectoryName.SQLify, mi.InstallDirName, mi.MD5}))
             .Connection.Open()
             Try
                 rslt = .ExecuteNonQuery
@@ -82,6 +82,7 @@ Module SQLite
             If rslt > 0 Then
                 .CommandText = "SELECT last_insert_rowid()"
                 rslt = .ExecuteScalar
+                mi.rowid = rslt
                 For Each f As map.InfoFile In mi.InfoFiles
                     .Parameters.Clear()
                     Dim bytes As Byte() = f.FileContent.Compress
@@ -118,8 +119,8 @@ Module SQLite
         dbExecuteNonQuery(String.Format(My.Settings.DeleteMissionFile, folderName, filename))
     End Sub
 
-    Public Sub UpdateMissionFile(rowid As Integer, MissionName As String, Author As String, ReleaseDate As String)
-        dbExecuteNonQuery(String.Format(My.Settings.UpdateFMFiles, MissionName, Author, ReleaseDate, rowid))
+    Public Sub UpdateMissionFile(rowid As Integer, MissionName As String, Author As String, ReleaseDate As String, Rating As Integer, Completed As String)
+        dbExecuteNonQuery(String.Format(My.Settings.UpdateFMFiles, MissionName, Author, ReleaseDate, Rating, Completed, rowid))
     End Sub
 
     Public Function GetFileHashListFromDb() As DataTable
@@ -127,7 +128,9 @@ Module SQLite
     End Function
 
     Public Sub dtMissions_RowChanged(sender As Object, e As DataRowChangeEventArgs) 'Handles dtMissions.RowChanged
-        With CreateDbCommand(String.Format(My.Settings.UpdateFMFiles, e.Row.Item(3).ToString.SQLify, e.Row.Item(4).ToString, e.Row.Item(5).ToString.SQLify, CDate(e.Row.Item(6)).ToString("yyyy-MM-dd"), e.Row.Item(0)))
+        'UPDATE FMFiles SET Ver = '{0}', MissionName = '{1}', Author = '{2}', ReleaseDate = '{3}', Rating = {4}, Completed = {5} WHERE rowid = {6}
+        Dim cmd As String = String.Format(My.Settings.UpdateFMFiles, e.Row.Item(cols.Ver).ToString, e.Row.Item(cols.MissionName).ToString.SQLify, e.Row.Item(cols.Author).ToString.SQLify, CDate(e.Row.Item(cols.Released)).ToString("yyyy-MM-dd"), e.Row.Item(cols.Rating).ToString, e.Row.Item(cols.Completed).ToString, e.Row.Item(cols.id))
+        With CreateDbCommand(cmd)
             .Connection.Open()
             .ExecuteNonQuery()
             .Connection.Close()
