@@ -11,17 +11,21 @@ Imports SevenZip
 Public Class frmMain
     Inherits Form
 
-    Dim ico As System.Drawing.Icon = Nothing
     Dim WithEvents cbMaxCash As CheckBox
+    Private Const UserCfg As String = "USER.CFG"
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
 #If DEBUG Then
         'CultureInfo.CurrentCulture = New CultureInfo("el-GR")
 #End If
         Application.EnableVisualStyles()
-        ico = System.Drawing.Icon.ExtractAssociatedIcon(Process.GetCurrentProcess.MainModule.FileName)
-        Icon = ico
-        btnPlay.Image = ico.ToBitmap
+        Icon = System.Drawing.Icon.ExtractAssociatedIcon(Process.GetCurrentProcess.MainModule.FileName)
+        btnPlay.Image = GetIcon(GameVersion)
+        mnuPlayFanMission.Image = GetIcon(GameVersion)
+        cmnuPlayFanMission.Image = GetIcon(GameVersion)
+        btnPlayOriginalMissions.Image = GetIcon(GameVersion)
+        mnuPlayOriginalMissions.Image = GetIcon(GameVersion)
+        cmnuPlayOriginalMissions.Image = GetIcon(GameVersion)
         Text = GameName & " Fan Mission Selector"
         LoadFMSelCfg()
         InitializeDb()
@@ -36,25 +40,17 @@ Public Class frmMain
         mnuOnlyGameMissions.Checked = Not ViewAllMissions
         gridFMs.Columns.Item(cols.Ver).Visible = ViewAllMissions
 
-        cboGamesys.Items.Clear()
-        cboGamesys.Visible = False
-        If Not (File.Exists(GamePath & "\TFix_readme.txt") Or Directory.Exists(GamePath & "\Tafferpatcher")) Then
-            If GameVersion = "SS2" Or GameVersion = "T1" Or GameVersion = "T2" Then
-                cboGamesys.Items.AddRange(GetGamesysFileList)
-                cboGamesys.SelectedIndex = 0
-                cboGamesys.Visible = True
-            End If
-        End If
-
         If GameVersion = "T1" Then
             For Each s As String In My.Settings.T1OrigMissions
                 btnPlayOriginalMissions.DropDownItems.Add(s)
                 mnuPlayOriginalMissions.DropDownItems.Add(s)
+                cmnuPlayOriginalMissions.DropDownItems.Add(s)
             Next
         ElseIf GameVersion = "T2" Then
             For Each s As String In My.Settings.T2OrigMissions
                 btnPlayOriginalMissions.DropDownItems.Add(s)
                 mnuPlayOriginalMissions.DropDownItems.Add(s)
+                cmnuPlayOriginalMissions.DropDownItems.Add(s)
             Next
         End If
 
@@ -64,11 +60,33 @@ Public Class frmMain
             Dim tsItem As New ToolStripControlHost(cbMaxCash) With {.Alignment = ToolStripItemAlignment.Right}
             ToolStrip1.Items.Add(tsItem)
             mnuMaxCash.Visible = True
+            MakeBakup(Path.Combine(GamePath, UserCfg))
+        End If
+
+        If gridFMs.RowCount > 0 Then
+            gridFMs.Item(cols.FileName, 0).Selected = True
+            gridFMs_CellClick(Nothing, New DataGridViewCellEventArgs(cols.FileName, 0))
         End If
 
         AddHandler dtMissions.RowChanged, AddressOf dtMissions_RowChanged
         AddHandler dvMissions.ListChanged, Sub(sndr As Object, ee As ListChangedEventArgs) UpdateCounts()
         AddHandler fmselSync.SyncInfo, AddressOf SyncInfoEventHandler
+    End Sub
+
+    Private Sub MakeBakup(Filename As String)
+        With New FileInfo(Filename)
+            If File.Exists(.FullName.bak) Then
+                File.Copy(.FullName.bak, .FullName, True)
+            ElseIf File.Exists(.FullName) Then
+                If File.Exists(.FullName.tfmm) Then
+                    File.Delete(.FullName)
+                Else
+                    File.Copy(.FullName, .FullName.bak, True)
+                End If
+            Else
+                File.WriteAllText(.FullName.tfmm, "This file was added by TFMM and is a flag indicating that " & .Name & " was added by TFMM and should be deleted. Make sense?")
+            End If
+        End With
     End Sub
 
     Private Sub txtFilter_Enter(sender As Object, e As EventArgs) Handles txtFilter.Enter
@@ -121,42 +139,32 @@ Public Class frmMain
                            If gridFMs.SelectedCells.Count > 0 Then
                                With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
                                    If .Cells(cols.Ver).Value = GameVersion Then
-                                       Dim sourceZip As String = .Cells(cols.Directory).Value.ToString & "\" & .Cells(cols.FileName).Value.ToString
-                                       Dim destFldr As String = ""
-                                       If FMRootPath = "" Then
-                                           destFldr = ".\FMs\" & .Cells(cols.InstallFolder).Value.ToString
-                                       Else
-                                           destFldr = FMRootPath & "\" & .Cells(cols.InstallFolder).Value.ToString
-                                       End If
-                                       If destFldr.StartsWith(".\") Then
-                                           destFldr = GamePath & destFldr.Substring(1)
-                                       End If
+                                       Dim sourceZip As String = Path.Combine(.Cells(cols.Directory).Value.ToString, .Cells(cols.FileName).Value.ToString)
+                                       Dim destFldr As String = Path.Combine(FMRootPath, .Cells(cols.InstallFolder).Value.ToString)
                                        If Not Directory.Exists(destFldr) Then
                                            If File.Exists(sourceZip) Then
                                                Try
                                                    Directory.CreateDirectory(destFldr)
                                                    UnzipMission(sourceZip, destFldr)
-                                                   SelectedFM = .Cells(cols.InstallFolder).Value.ToString
-                                                   FMSelReturnValue = eFMSelReturn.kSelFMRet_OK
-                                                   Close()
                                                Catch ex As Exception
                                                    If Directory.Exists(destFldr) Then
                                                        Directory.Delete(destFldr, True)
                                                    End If
                                                    MsgBox("Error launching fan mission. Error was: " & ex.Message)
+                                                   Exit Sub
                                                End Try
                                            Else
                                                MsgBox("Source zip file not found. Can't launch fan mission.", MsgBoxStyle.Critical)
+                                               Exit Sub
                                            End If
-                                       Else
-                                           SelectedFM = .Cells(cols.InstallFolder).Value.ToString
-                                           ApplyMaxCash(.Cells(cols.InstallFolder).Value.ToString)
-                                           ApplyCustomGameSys(.Cells(cols.InstallFolder).Value.ToString)
-                                           FMSelReturnValue = eFMSelReturn.kSelFMRet_OK
-                                           Close()
                                        End If
+                                       MakeBakup(Path.Combine(destFldr, UserCfg))
+                                       ApplyMaxCash(Path.Combine(destFldr, UserCfg))
+                                       SelectedFM = .Cells(cols.InstallFolder).Value.ToString
+                                       FMSelReturnValue = eFMSelReturn.kSelFMRet_OK
+                                       Close()
                                    Else
-                                       MsgBox("The selected mission is a " & .Cells(cols.Ver).Value & " mission. It cannot run in " & GameName, MsgBoxStyle.Information)
+                                       MsgBox("The selected mission is a " & .Cells(cols.Ver).Value.ToString & " mission. It cannot run in " & GameName, MsgBoxStyle.Information)
                                    End If
                                End With
                            End If
@@ -183,6 +191,14 @@ Public Class frmMain
             RemoveHandler sze.FileExtractionFinished, AddressOf sze_FileExtractionFinished
         End Using
 
+        With New FileInfo(sourceZip)
+            If File.Exists(.FullName.Replace(.Extension, ".saves")) Then
+                Using sze As New SevenZipExtractor(.FullName.Replace(.Extension, ".saves"))
+                    sze.ExtractArchive(destFldr & If(GameVersion = "T3", "\SaveGames", ""))
+                End Using
+            End If
+        End With
+
         ToolStrip1.BeginInvoke(Sub()
                                    lblSyncProg.Visible = False
                                    pbSyncProg.Visible = False
@@ -190,63 +206,69 @@ Public Class frmMain
                                End Sub)
     End Sub
 
-    Private Sub ApplyMaxCash(Optional SelectedFM As String = "")
-        If GameVersion = "T1" Or GameVersion = "T2" Then
-            Dim UserCfgData As String = File.ReadAllText(GamePath & "\User.cfg")
-            If SelectedFM = "" Then
-                Dim TargetCfgData As String = GamePath & "\User.cfg"
-                If cbMaxCash.Checked Then
-                    If Not File.Exists(TargetCfgData & ".bak") Then File.WriteAllText(TargetCfgData & ".bak", UserCfgData)
-                    UserCfgData = "cash_bonus " & If(GameVersion = "T1", "99999", "1500") & vbCrLf & UserCfgData
-                    File.WriteAllText(TargetCfgData, UserCfgData)
-                Else
-                    If File.Exists(TargetCfgData & ".bak") Then
-                        File.Copy(TargetCfgData & ".bak", TargetCfgData, True)
-                    End If
-                End If
-            Else
-                Dim TargetCfgData As String = FMRootPath & "\" & SelectedFM & "\User.cfg"
-                If cbMaxCash.Checked Then
-                    UserCfgData = "cash_bonus " & If(GameVersion = "T1", "99999", "1500") & vbCrLf & UserCfgData
-                    File.WriteAllText(TargetCfgData, UserCfgData)
-                Else
-                    If File.Exists(TargetCfgData) Then File.Delete(TargetCfgData)
-                End If
-            End If
+    Private Sub ZipSaves()
+        Dim lst As New List(Of String)
+        If GameVersion = "SS2" Then
+            For Each di As DirectoryInfo In New DirectoryInfo(Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder))).GetDirectories("save_*")
+                For Each fi As FileInfo In di.GetFiles()
+                    lst.Add(fi.FullName)
+                Next
+            Next
+        ElseIf GameVersion = "T3" Then
+            For Each fi As FileInfo In New DirectoryInfo(Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder), "SaveGames")).GetFiles("*.*", SearchOption.AllDirectories)
+                lst.Add(fi.FullName)
+            Next
+        Else
+            For Each fi As FileInfo In New DirectoryInfo(Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder))).GetFiles("*.sav", SearchOption.AllDirectories)
+                lst.Add(fi.FullName)
+            Next
+        End If
+        Dim savfi As New FileInfo(GetGridValue(cols.FileName))
+        Dim tmp As String = ""
+        For Each s As String In lst
+            tmp &= s & vbCrLf
+        Next
+        If lst.Count > 0 Then
+            With New SevenZipCompressor(Path.Combine(AppPath, "tmp.zip"))
+                .ArchiveFormat = OutArchiveFormat.SevenZip
+                .CompressFiles(Path.Combine(GetGridValue(cols.Directory), savfi.Name.Replace(savfi.Extension, ".saves")), lst.ToArray)
+            End With
         End If
     End Sub
 
-    Private Sub ApplyCustomGameSys(SelectedFM As String)
-        If GameVersion <> "T3" AndAlso cboGamesys.SelectedIndex > -1 Then
-            Dim CustomGamesys As String = AppPath & "\CustomGamesys\" & cboGamesys.SelectedItem.ToString
-            Dim TargetGamesys As String = If(SelectedFM = "", GamePath, FMRootPath & "\" & SelectedFM) & "\dark.gam"
-            If cboGamesys.SelectedItem.ToString = "None" Then
-                If File.Exists(TargetGamesys) AndAlso File.Exists(TargetGamesys & ".bak") Then
-                    File.Copy(TargetGamesys & ".bak", TargetGamesys, True)  'User chose None so restore original gamesys file.
-                ElseIf Not TargetGamesys.Contains(GamePath) AndAlso File.Exists(TargetGamesys) Then
-                    File.Delete(TargetGamesys)  'delete dark.gam from fan mission only.
-                End If
-            Else
-                If File.Exists(TargetGamesys) AndAlso Not File.Exists(TargetGamesys & ".bak") Then File.Copy(TargetGamesys, TargetGamesys & ".bak")
-                File.Copy(CustomGamesys, TargetGamesys, True)
-            End If
+    Private Sub ApplyMaxCash(UserCfgFile As String)
+        If (GameVersion = "T1" Or GameVersion = "T2") AndAlso cbMaxCash.Checked Then
+            Dim UserCfgData As String = ""
+            If File.Exists(UserCfgFile) Then UserCfgData = File.ReadAllText(UserCfgFile)
+            UserCfgData = "cash_bonus " & If(GameVersion = "T1", "99999", "1500") & vbCrLf & UserCfgData
+            File.WriteAllText(UserCfgFile, UserCfgData)
         End If
     End Sub
 
-    Private Sub btnPlayOriginalMissions_Click(sender As Object, e As EventArgs) Handles btnPlayOriginalMissions.Click, mnuPlayOriginalMissions.Click
+    Private Sub btnUninstallFanMission_Click(sender As Object, e As EventArgs) Handles btnUninstallFanMission.Click, mnuUninstallFanMission.Click, cmnuUninstallFanMission.Click
+        Dim MissionName As String = GetGridValue(cols.MissionName)
+        If MissionName = "" Then MissionName = GetGridValue(cols.FileName)
+        If MsgBox("Uninstall " & MissionName & "?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            ZipSaves()
+        End If
+        Directory.Delete(Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder)), True)
+        MsgBox(MissionName & " is uninstalled.", MsgBoxStyle.Information)
+    End Sub
+
+    Private Sub btnPlayOriginalMissions_Click(sender As Object, e As EventArgs) Handles btnPlayOriginalMissions.Click, mnuPlayOriginalMissions.Click, cmnuPlayOriginalMissions.Click
         gridFMs.EndEdit()
-        ApplyMaxCash()
+        ApplyMaxCash(Path.Combine(GamePath, UserCfg))
         FMSelReturnValue = eFMSelReturn.kSelFMRet_Cancel
         Close()
     End Sub
 
-    Private Sub btnPlayOriginalMissions_DropDownItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles btnPlayOriginalMissions.DropDownItemClicked, mnuPlayOriginalMissions.DropDownItemClicked
+    Private Sub btnPlayOriginalMissions_DropDownItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles btnPlayOriginalMissions.DropDownItemClicked, mnuPlayOriginalMissions.DropDownItemClicked, cmnuPlayOriginalMissions.DropDownItemClicked
         Dim MissionIndex As Integer = e.ClickedItem.Text.Substring(0, 2).Trim
         gridFMs.EndEdit()
-        ApplyMaxCash()
-        Dim UserCfgData As String = File.ReadAllText(GamePath & "\User.cfg")
+        ApplyMaxCash(Path.Combine(GamePath, UserCfg))
+        Dim UserCfgData As String = File.ReadAllText(Path.Combine(GamePath, UserCfg))
         UserCfgData = "starting_mission " & MissionIndex & vbCrLf & UserCfgData
-        File.WriteAllText(GamePath & "\User.cfg", UserCfgData)
+        File.WriteAllText(Path.Combine(GamePath, UserCfg), UserCfgData)
         FMSelReturnValue = eFMSelReturn.kSelFMRet_Cancel
         Close()
     End Sub
@@ -344,13 +366,48 @@ Public Class frmMain
                 UserNoteDirty = False
             End If
             lastRow = gridFMs.SelectedCells(0).RowIndex
-            lastRowId = If(IsDBNull(gridFMs.Rows(lastRow).Cells(0).Value), -1, (gridFMs.Rows(lastRow).Cells(0).Value))
+            lastRowId = gridFMs.Rows(lastRow).Cells(0).Value
             With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
-                If Not IsDBNull(.Cells(0).Value) Then
-                    Dim nv As NameValueCollection = SelectInfoFiles(CInt(.Cells(0).Value))
-                    UpdateInfoTabs(lastRowId, nv)
-                End If
+                Dim nv As NameValueCollection = SelectInfoFiles(CInt(.Cells(0).Value))
+                UpdateInfoTabs(lastRowId, nv)
+                SetMenuChoices()
             End With
+        End If
+    End Sub
+
+    Private Sub SetMenuChoices()
+        With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
+            Dim GameVer As String = .Cells(cols.Ver).Value.ToString
+            Dim GameIsMatch As Boolean = (GameVer = GameVersion)
+            Dim GameIsInstalled As Boolean = Directory.Exists(FMRootPath & "\" & .Cells(cols.InstallFolder).Value.ToString)
+            mnuPlayFanMission.Visible = GameIsMatch
+            cmnuPlayFanMission.Visible = GameIsMatch
+            btnUninstallFanMission.Visible = GameIsInstalled
+            mnuUninstallFanMission.Visible = GameIsInstalled
+            cmnuUninstallFanMission.Visible = GameIsInstalled
+            If GameIsInstalled Then
+                Dim bmp As System.Drawing.Bitmap = GetIcon(GameVer)
+                btnUninstallFanMission.Image = bmp
+                mnuUninstallFanMission.Image = bmp
+                cmnuUninstallFanMission.Image = bmp
+            End If
+        End With
+    End Sub
+
+    Private Function GetIcon(GameVer As String) As System.Drawing.Bitmap
+        Select Case GameVer
+            Case "SS2" : Return My.Resources.SS2
+            Case "T1" : Return My.Resources.T1
+            Case "T2" : Return My.Resources.T2
+            Case "T3" : Return My.Resources.T3
+            Case Else : Return My.Resources.err
+        End Select
+    End Function
+
+    Private Sub gridFMs_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles gridFMs.CellMouseDown
+        If e.Button = MouseButtons.Right Then
+            gridFMs.Item(e.ColumnIndex, e.RowIndex).Selected = True
+            gridFMs_CellClick(Nothing, New DataGridViewCellEventArgs(e.ColumnIndex, e.RowIndex))
         End If
     End Sub
 
@@ -422,15 +479,14 @@ Public Class frmMain
     End Sub
 
     Private Sub gridFMs_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridFMs.CellDoubleClick
+        If e.RowIndex = -1 Then Exit Sub
         Select Case e.ColumnIndex
             Case cols.Directory
                 Process.Start(gridFMs.Item(cols.Directory, e.RowIndex).Value.ToString)
             Case cols.FileName
                 Process.Start(gridFMs.Item(cols.Directory, e.RowIndex).Value.ToString & "\" & gridFMs.Item(cols.FileName, e.RowIndex).Value.ToString)
             Case cols.InstallFolder
-                Dim InstPath As String = CStr(FMRootPath & vbNullString).Trim
-                If InstPath = "" Or InstPath.StartsWith(".\FMs") Then InstPath = GamePath & "\FMs"
-                InstPath &= "\" & gridFMs.Item(cols.InstallFolder, e.RowIndex).Value.ToString
+                Dim InstPath As String = Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder))
                 If Directory.Exists(InstPath) Then
                     Process.Start(InstPath)
                 Else
@@ -445,6 +501,14 @@ Public Class frmMain
                 End With
         End Select
     End Sub
+
+    Private Function GetGridValue(col As cols) As String
+        Return GetSelectedGridRow.Cells(col).Value.ToString
+    End Function
+
+    Private Function GetSelectedGridRow() As DataGridViewRow
+        Return CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
+    End Function
 
     Private Sub mnuMaxCash_Click(sender As Object, e As EventArgs) Handles mnuMaxCash.Click
         cbMaxCash.Checked = mnuMaxCash.Checked
@@ -483,6 +547,10 @@ Public Class frmMain
                                    pbSyncProg.Value = CInt(e.PercentDone)
                                    lblSyncProg.Text = e.FileInfo.FileName
                                End Sub)
+    End Sub
+
+    Private Sub gridFMs_Sorted(sender As Object, e As EventArgs) Handles gridFMs.Sorted
+        SetMenuChoices()
     End Sub
 
 #End Region

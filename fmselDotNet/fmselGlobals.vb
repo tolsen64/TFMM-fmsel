@@ -81,4 +81,14 @@ Module tfmsGlobals
         value = value.Replace("'", "''")
         Return value
     End Function
+
+    <Extension()>
+    Function bak(Filename As String) As String
+        Return Filename & ".bak"
+    End Function
+
+    <Extension()>
+    Function tfmm(Filename As String) As String
+        Return Filename & ".tfmm"
+    End Function
 End Module

@@ -3,6 +3,7 @@ Imports RGiesecke.DllExport
 Imports System.Text.Encoding
 Imports System.IO
 Imports System.Reflection
+Imports System.Text.RegularExpressions
 
 Public Module fmsel
 
@@ -55,10 +56,6 @@ Public Module fmsel
             .Start()
             .Join()  'blocks the calling thread until thd exits.
         End With
-
-        'assume user chose "AThiefsHoliday" from the UI
-        'Dim sName As Byte() = ASCII.GetBytes("AThiefsHoliday")   'folder name of mission to play
-        'Marshal.Copy(sName, 0, FMSelData.sName, sName.Length)
 
         Return FMSelReturnValue
     End Function
@@ -120,9 +117,12 @@ Public Module fmsel
     ''' <returns></returns>
     Public Property FMSelReturnValue As eFMSelReturn = eFMSelReturn.kSelFMRet_ExitGame
 
-    Public WriteOnly Property SelectedFM As String
+    Public Property SelectedFM As String
+        Get
+            Return Marshal.PtrToStringAnsi(FMSelData.sName)
+        End Get
         Set(value As String)
-            Dim sName As Byte() = ASCII.GetBytes(value)   'folder name of mission to play
+            Dim sName As Byte() = ASCII.GetBytes(value & Chr(0))   'folder name of mission to play
             Marshal.Copy(sName, 0, FMSelData.sName, sName.Length)
         End Set
     End Property
@@ -181,7 +181,11 @@ Public Module fmsel
     ''' <returns></returns>
     Public Property FMRootPath As String
         Get
-            Return Marshal.PtrToStringAnsi(FMSelData.sRootPath)
+            Dim s = Marshal.PtrToStringAnsi(FMSelData.sRootPath).Trim
+            If s = "" Then Return Path.Combine(GamePath, "FMs")
+            If s.StartsWith(".") Then Return Path.Combine(GamePath, s.TrimStart("."c))
+            If Not s.Contains(":") Then Return Path.Combine(GamePath, s)
+            Return s
         End Get
         Set(value As String)
             Dim tmp As Byte() = ASCII.GetBytes(value)
