@@ -1,7 +1,11 @@
 # TFMM-fmsel
 Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; Thief 2 and for the Sneaky Upgraded version of Thief 3. You need to have the .NET Framework 4.6.1 installed on your pc for this to work.
 
-INSTALLATION:
+[Discussion thread on TTLG.com](http://www.ttlg.com/forums/showthread.php?t=135810) | [Demo video of latest build](https://www.youtube.com/watch?v=ZwENQX5gC8g)
+
+![]({{site.baseurl}}//TFMM_Screenshot.jpg)
+
+## INSTALLATION:
 
 1. Download the archive from this page and unzip its contents to a folder of your choosing. Don't put it in a game folder, but put it in its own folder. All games will be configured to run this launcher.
 2. Edit the cam_mod.ini file for each NewDark game to use this launcher instead of fmsel.
@@ -10,7 +14,7 @@ INSTALLATION:
 5. After the folders are defined, click the Sync FM button at the bottom to begin parsing mission files. You might not see anything in the grid for a few minutes.
 6. Once the mission have been parsed and the grid is populated, you are ready to go. Whenever you add or delete a mission archive, be sure to re-sync.
 
-USAGE TIPS:
+## USAGE TIPS:
 
 1. Edit MissionName, Author, ReleaseDate by clicking in the cell and start typing, or click 2-3 times for it to enter edit mode. Changes are saved as you click out of the row.
 2. Copy metadata from one mission to another by dragging the source row to the target row.
@@ -24,3 +28,5 @@ USAGE TIPS:
 10. Double-clicking in a file or folder column will open the file or folder with the default program.
 11. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
 12. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
+
+
