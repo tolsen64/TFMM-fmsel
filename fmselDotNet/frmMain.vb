@@ -7,6 +7,7 @@ Imports System.Text.Encoding
 Imports System.Collections.Specialized
 Imports System.Data.SQLite
 Imports SevenZip
+Imports System.Drawing
 
 Public Class frmMain
     Inherits Form
@@ -273,23 +274,23 @@ Public Class frmMain
         Close()
     End Sub
 
-    Private Sub grid_DragEnter(sender As Object, e As DragEventArgs)
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            e.Effect = DragDropEffects.All
-        End If
-    End Sub
+    'Private Sub grid_DragEnter(sender As Object, e As DragEventArgs)
+    '    If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+    '        e.Effect = DragDropEffects.All
+    '    End If
+    'End Sub
 
-    Private Sub grid_DragDrop(sender As Object, e As DragEventArgs)
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            Dim MyFiles() As String
-            ' Assign the files to an array.
-            MyFiles = e.Data.GetData(DataFormats.FileDrop)
-            ' Display the file Name
-            'TextBoxDrop.Text = MyFiles(0)
-            ' Display the file contents
-            MsgBox(MyFiles(0))
-        End If
-    End Sub
+    'Private Sub grid_DragDrop(sender As Object, e As DragEventArgs)
+    '    If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+    '        Dim MyFiles() As String
+    '        ' Assign the files to an array.
+    '        MyFiles = e.Data.GetData(DataFormats.FileDrop)
+    '        ' Display the file Name
+    '        'TextBoxDrop.Text = MyFiles(0)
+    '        ' Display the file contents
+    '        MsgBox(MyFiles(0))
+    '    End If
+    'End Sub
 
     Private Sub SyncInfoEventHandler(sender As Object, e As SyncInfoEventArgs)
         If e.Index < e.FileCount - 1 Then
@@ -439,18 +440,6 @@ Public Class frmMain
         SyncMissionFolders()
     End Sub
 
-    Private Function GetGamesysFileList() As String()
-        Dim lst As New List(Of String)
-        For Each fi As FileInfo In New DirectoryInfo(AppPath & "\CustomGamesys").GetFiles
-            If fi.Name.ToUpper.StartsWith(GameVersion) Then
-                lst.Add(fi.Name)
-            End If
-        Next
-        lst.Sort()
-        lst.Insert(0, "None")
-        Return lst.ToArray
-    End Function
-
     Private Sub mnuMissions_Click(sender As Object, e As EventArgs) Handles mnuAllMissions.Click, mnuOnlyGameMissions.Click
         Dim mi As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
         If mi.Name = "mnuAllMissions" Then
@@ -551,6 +540,57 @@ Public Class frmMain
 
     Private Sub gridFMs_Sorted(sender As Object, e As EventArgs) Handles gridFMs.Sorted
         SetMenuChoices()
+    End Sub
+
+#End Region
+
+#Region "Drag & Drop"
+
+    Private dragIndex As Integer
+    Private dropIndex As Integer
+    Private dragRect As Rectangle
+
+    Private Sub gridFMs_DragOver(sender As Object, e As DragEventArgs) Handles gridFMs.DragOver
+        If e.Data.GetDataPresent(GetType(DataGridViewRow)) Then
+            e.Effect = DragDropEffects.Move
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+
+    Private Sub gridFMs_MouseDown(sender As Object, e As MouseEventArgs) Handles gridFMs.MouseDown
+        dragIndex = gridFMs.HitTest(e.X, e.Y).RowIndex
+        If dragIndex > -1 Then
+            Dim dragSize As Size = SystemInformation.DragSize
+            dragRect = New Rectangle(New Point(e.X - (dragSize.Width / 2), e.Y - (dragSize.Height / 2)), dragSize)
+        Else
+            dragRect = Rectangle.Empty
+        End If
+    End Sub
+
+    Private Sub gridFMs_MouseMove(sender As Object, e As MouseEventArgs) Handles gridFMs.MouseMove
+        If (e.Button And MouseButtons.Left) = MouseButtons.Left Then
+            If (dragRect <> Rectangle.Empty AndAlso Not dragRect.Contains(e.X, e.Y)) Then
+                gridFMs.DoDragDrop(gridFMs.Rows(dragIndex), DragDropEffects.Move)
+            End If
+        End If
+    End Sub
+
+    Private Sub gridFMs_DragDrop(sender As Object, e As DragEventArgs) Handles gridFMs.DragDrop
+        Dim p As Point = gridFMs.PointToClient(New Point(e.X, e.Y))
+        dropIndex = gridFMs.HitTest(p.X, p.Y).RowIndex
+        e.Effect = DragDropEffects.None
+        If MsgBox("Copy meta data from " & gridFMs.Item(cols.FileName, dragIndex).Value.ToString & " to " & gridFMs.Item(cols.FileName, dropIndex).Value.ToString & "?", MsgBoxStyle.YesNo Or MsgBoxStyle.Question) = MsgBoxResult.Yes Then
+            Dim dragRow As DataRow = dtMissions.Select("rowid=" & gridFMs.Item(cols.id, dragIndex).Value)(0)
+            Dim dropRow As DataRow = dtMissions.Select("rowid=" & gridFMs.Item(cols.id, dropIndex).Value)(0)
+            dropRow.Item(cols.Ver) = dragRow(cols.Ver)
+            dropRow.Item(cols.MissionName) = dragRow(cols.MissionName)
+            dropRow.Item(cols.Author) = dragRow(cols.Author)
+            dropRow.Item(cols.Rating) = dragRow(cols.Rating)
+            dropRow.Item(cols.Completed) = dragRow(cols.Completed)
+            dropRow.AcceptChanges()
+            SaveUserNote(dropRow.Item(cols.id), GetUserNotesFromDb(dragRow.Item(cols.id)))
+        End If
     End Sub
 
 #End Region

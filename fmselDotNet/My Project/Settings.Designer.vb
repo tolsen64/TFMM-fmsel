@@ -196,18 +196,23 @@ Namespace My
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("TIPS:"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"1. Edit MissionName, Author, ReleaseDate by clicking in the cell and sta"& _ 
             "rt typing, or click 2-3 times for it to enter edit mode. Changes are saved as yo"& _ 
-            "u click out of the row."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"2. If the detected mission type (Ver column) is incorre"& _ 
-            "ct, double-click to change it."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"3. Click on the stars in the Rating column to se"& _ 
-            "t your rating for each mission. Click the very left edge of the first star to se"& _ 
-            "t it to zero."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"4. Use the Completed column to keep track what what missions you'"& _ 
-            "ve completed and what difficulty you completed. Choose yes if the mission does n"& _ 
-            "ot have difficulty levels."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"5. Use the User Notes tab for each mission to keep n"& _ 
-            "otes about that mission."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"6. Type in the Filter textbox to search by FileName, M"& _ 
-            "issionName, and Author. Clear the textbox to show all missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"7. Click the Sy"& _ 
-            "nc button after missions have been added or deleted from your archive folder to "& _ 
-            "update the mission list."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"8. Click the down-arrow next to the Play Fan Mission b"& _ 
-            "utton to play the original missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"9. Closing the program by using the Exit m"& _ 
-            "enu item or closing the main window will exit without launching the game.")>  _
+            "u click out of the row."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"2. Copy metadata from one mission to another by draggin"& _ 
+            "g the source row to the target row."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"3. If the detected mission type (Ver column"& _ 
+            ") is incorrect, double-click to change it."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"4. Click on the stars in the Rating "& _ 
+            "column to set your rating for each mission. Click the very left edge of the firs"& _ 
+            "t star to set it to zero."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"5. Use the Completed column to keep track what what m"& _ 
+            "issions you've completed and what difficulty you completed. Choose yes if the mi"& _ 
+            "ssion does not have difficulty levels."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"6. Use the User Notes tab for each missi"& _ 
+            "on to keep notes about that mission."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"7. Type in the Filter textbox to search by"& _ 
+            " FileName, MissionName, and Author. Clear the textbox to show all missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"8. "& _ 
+            "Click the Sync button after missions have been added or deleted from your archiv"& _ 
+            "e folder to update the mission list."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"9. The Max Cash checkbox (for T1 & T2) giv"& _ 
+            "es you the maximum cash available to use for loadouts."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"10. Click the down-arrow"& _ 
+            " next to the Play Fan Mission button to play the original missions."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"11. Double-"& _ 
+            "clicking in a file or folder column will open the file or folder with the defaul"& _ 
+            "t program."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"12. Closing the program by using the Exit menu item or closing the m"& _ 
+            "ain window will exit without launching the game."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"13. Use the donation links to "& _ 
+            "support development if you like the launcher.")>  _
         Public ReadOnly Property AboutText() As String
             Get
                 Return CType(Me("AboutText"),String)

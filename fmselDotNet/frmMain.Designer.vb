@@ -244,6 +244,7 @@ Partial Class frmMain
         '
         'gridFMs
         '
+        Me.gridFMs.AllowDrop = True
         Me.gridFMs.AllowUserToAddRows = False
         Me.gridFMs.AllowUserToDeleteRows = False
         Me.gridFMs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
