@@ -24,9 +24,10 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 6. Use the User Notes tab for each mission to keep notes about that mission.
 7. Type in the Filter textbox to search by FileName, MissionName, and Author. Clear the textbox to show all missions.
 8. Click the Sync button after missions have been added or deleted from your archive folder to update the mission list.
-9. Click the down-arrow next to the Play Fan Mission button to play the original missions.
-10. Double-clicking in a file or folder column will open the file or folder with the default program.
-11. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
-12. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
+9. The Max Cash checkbox (for T1 & T2) gives you the maximum cash available to use for loadouts.
+10. Click the down-arrow next to the Play Fan Mission button to play the original missions.
+11. Double-clicking in a file or folder column will open the file or folder with the default program.
+12. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
+13. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
 
 
