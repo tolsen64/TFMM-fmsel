@@ -23,3 +23,4 @@ USAGE TIPS:
 9. Click the down-arrow next to the Play Fan Mission button to play the original missions.
 10. Double-clicking in a file or folder column will open the file or folder with the default program.
 11. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
+12. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
