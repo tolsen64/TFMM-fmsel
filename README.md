@@ -3,7 +3,7 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 
 [Discussion thread on TTLG.com](http://www.ttlg.com/forums/showthread.php?t=135810) | [Demo video of latest build](https://www.youtube.com/watch?v=ZwENQX5gC8g)
 
-![]({{site.baseurl}}//TFMM_Screenshot.jpg)
+![](http://i.imgur.com/lVJJLfy.jpg)
 
 ## INSTALLATION:
 
