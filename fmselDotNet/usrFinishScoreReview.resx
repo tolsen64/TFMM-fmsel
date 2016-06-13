@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="cboYourScore.ToolTip" xml:space="preserve">
+    <value>What would you score this FM out of 10?
+1 = the LOWEST score (you wouldn't play it again)
+10 = the HIGHEST score (you want everyone to play this as you think it's the best FM made)
+0 = Unscored, this means that you have not yet scored the FM. You will be unable to upload the score until you have scored it.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnFMKeywordsDownload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAMxJREFUOE9jQAca
+        in+KNJR//caG1RX/rIUqww00FP91aSj+/48VK/w7CVWGG4waQIEBGop/N4AUqCv+e4ZVMxCrK/z7DFID
+        tGQ9VBsCAOM/G5sm7PhfFlQbMvjPBJTYgV0DMv63A6QWqgkVqKh8lQF64R12jUAvAOVAaqDKsQMNpT8R
+        2DSDMNCAaKgy/AAYoKswDFD6uxoqTRhoaf0TAvr1CUwz0ObnKir/RKHSxAFNpd+eQEP+gbC6yj9fqDBp
+        QF3p72QgngXlYgEMDAA3EBCjGku85gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnFMKeywordsUpload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAMhJREFUOE/tkTEK
+        wkAQRYOtmRUCsivmQhb2gjfQzltY23kDEdHSK+Qeol0asTHZibPJyEIyRgVLH7wi2f9CYIM2DNgVuebH
+        7zCQjUyI6NSAY379GbHCiMKTCYuiEi9kn4/fYwA3Pq7UYLd83I5W+aQePx0onPJMZhjdYh1iKsWVmLoN
+        z+sUHYqPcuh1G7flyEO/PpcCUYUzzjx03wf6xYQ8i5Gzi9dyA3bPWRO6gaUYl2LCs9f8P/CTD+QLo+6Z
+        6TXVkO94xgTBA/yX/oaMma6KAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="pbViewAllFMScores.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        oPAP1pn87h0aPWMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="pbViewAllFMScores.ToolTip" xml:space="preserve">
+    <value>This will navigate to the GarrettLoaders FM scores results table on the GarrettLoader server.
+This sends no personal information and is simply displaying a web page which displays all the currently scored FMs.</value>
+  </data>
+  <data name="pbScoringGuidelines.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="btnFMScoresDownload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAMxJREFUOE9jQAca
+        in+KNJR//caG1RX/rIUqww00FP91aSj+/48VK/w7CVWGG4waQIEBGop/N4AUqCv+e4ZVMxCrK/z7DFID
+        tGQ9VBsCAOM/G5sm7PhfFlQbMvjPBJTYgV0DMv63A6QWqgkVqKh8lQF64R12jUAvAOVAaqDKsQMNpT8R
+        2DSDMNCAaKgy/AAYoKswDFD6uxoqTRhoaf0TAvr1CUwz0ObnKir/RKHSxAFNpd+eQEP+gbC6yj9fqDBp
+        QF3p72QgngXlYgEMDAA3EBCjGku85gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnFMScoresUpload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC45bDN+TgAAAMhJREFUOE/tkTEK
+        wkAQRYOtmRUCsivmQhb2gjfQzltY23kDEdHSK+Qeol0asTHZibPJyEIyRgVLH7wi2f9CYIM2DNgVuebH
+        7zCQjUyI6NSAY379GbHCiMKTCYuiEi9kn4/fYwA3Pq7UYLd83I5W+aQePx0onPJMZhjdYh1iKsWVmLoN
+        z+sUHYqPcuh1G7flyEO/PpcCUYUzzjx03wf6xYQ8i5Gzi9dyA3bPWRO6gaUYl2LCs9f8P/CTD+QLo+6Z
+        6TXVkO94xgTBA/yX/oaMma6KAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnFMScoresUpload.ToolTip" xml:space="preserve">
+    <value>When enabled, this will upload your score to the GarrettLoader server which other people can then download and see what are the best Fan Missions.
+
+Uploading does not send ANY personal information except a Unique ID which is a randomly generated ID that is used to restrict your score upload to 1 per FM.</value>
+  </data>
+</root>

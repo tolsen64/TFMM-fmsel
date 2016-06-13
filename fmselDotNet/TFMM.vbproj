@@ -88,6 +88,12 @@
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmScoringGuidelines.Designer.vb">
+      <DependentUpon>frmScoringGuidelines.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmScoringGuidelines.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -106,6 +112,12 @@
     <Compile Include="RatingColumn.vb" />
     <Compile Include="SQLite.vb" />
     <Compile Include="uncPath.vb" />
+    <Compile Include="usrFinishScoreReview.Designer.vb">
+      <DependentUpon>usrFinishScoreReview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="usrFinishScoreReview.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="WinApiDialogs.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -121,11 +133,17 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmScoringGuidelines.resx">
+      <DependentUpon>frmScoringGuidelines.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="usrFinishScoreReview.resx">
+      <DependentUpon>usrFinishScoreReview.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +272,9 @@
       <Project>{3c83e5e0-c132-4671-a789-d5b8e5e419b3}</Project>
       <Name>MissionArchiveParser</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net46\System.Data.SQLite.Core.targets')" />

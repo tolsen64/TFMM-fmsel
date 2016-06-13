@@ -192,6 +192,33 @@ Public Class frmMain
             RemoveHandler sze.FileExtractionFinished, AddressOf sze_FileExtractionFinished
         End Using
 
+        'If this is a "dromed only" mission (contains only .mis files), then we set it up to play normally in Thief.
+        If GameVersion = "T1" Or GameVersion = "T2" Then
+            If Not File.Exists(Path.Combine(destFldr, "strings", "missflag.str")) Then
+                Dim newMisNum As Integer = 19
+                Dim di As New DirectoryInfo(destFldr)
+                For Each fi As FileInfo In di.GetFiles("*.mis")
+                    newMisNum += 1
+                    fi.MoveTo(Path.Combine(fi.DirectoryName, "miss" & newMisNum.ToString & ".mis"))
+                Next
+                If Not Directory.Exists(Path.Combine(destFldr, "strings")) Then Directory.CreateDirectory(Path.Combine(destFldr, "strings"))
+                Using sw As New StreamWriter(Path.Combine(destFldr, "strings", "missflag.str"))
+                    For i As Integer = 1 To 19
+                        sw.WriteLine("miss_" & i.ToString & ": ""skip""")
+                    Next
+                    For i As Integer = 20 To newMisNum
+                        sw.Write("miss_" & i.ToString & ": ""no_briefing, no_loadout")
+                        sw.WriteLine(IIf(i = newMisNum, ", end""", """"))
+                    Next
+                    sw.Close()
+                End Using
+                For Each fi As FileInfo In di.GetFiles("*.str")
+                    If Not Directory.Exists(Path.Combine(destFldr, "books")) Then Directory.CreateDirectory(Path.Combine(destFldr, "books"))
+                    fi.MoveTo(Path.Combine(destFldr, "books", fi.Name))
+                Next
+            End If
+        End If
+
         With New FileInfo(sourceZip)
             If File.Exists(.FullName.Replace(.Extension, ".saves")) Then
                 Using sze As New SevenZipExtractor(.FullName.Replace(.Extension, ".saves"))
@@ -362,7 +389,7 @@ Public Class frmMain
         If gridFMs.SelectedCells.Count > 0 AndAlso gridFMs.SelectedCells(0).RowIndex <> lastRow Then
             If UserNoteDirty Then
                 Dim tp As TabPage = tabsDocs.TabPages.Item(tabsDocs.TabPages.Count - 1)
-                Dim txt As TextBox = tp.Controls.Item(0)
+                Dim txt As TextBox = CType(tp.Controls.Item(0), usrFinishScoreReview).txtMissionReviewNotes
                 SaveUserNote(lastRowId, txt.Text)
                 UserNoteDirty = False
             End If
@@ -427,10 +454,18 @@ Public Class frmMain
             End Select
             tabsDocs.TabPages.Add(tp)
         Next
-        Dim tpUserNotes As New TabPage("UserNotes")
-        Dim txtUserNotes As New TextBox With {.Multiline = True, .Dock = DockStyle.Fill, .Parent = tpUserNotes, .ScrollBars = ScrollBars.Vertical, .WordWrap = True}
-        txtUserNotes.Text = GetUserNotesFromDb(rowid)
-        AddHandler txtUserNotes.TextChanged, Sub() UserNoteDirty = True
+        Dim tpUserNotes As New TabPage("Notes/Score/Tags")
+        'Dim txtUserNotes As New TextBox With {.Multiline = True, .Dock = DockStyle.Fill, .Parent = tpUserNotes, .ScrollBars = ScrollBars.Vertical, .WordWrap = True}
+        Dim glFinishScoreReview As New usrFinishScoreReview() With {.Dock = DockStyle.Fill, .Parent = tpUserNotes}
+        With glFinishScoreReview
+            .txtMissionReviewNotes.Text = GetUserNotesFromDb(rowid)
+            AddHandler .txtMissionReviewNotes.TextChanged, Sub() UserNoteDirty = True
+            .cboYourScore.SelectedItem = CInt(GetGridValue(cols.Rating)) * 2
+            .ZipName = GetGridValue(cols.FileName)
+            .MissionName = GetGridValue(cols.MissionName)
+        End With
+        'txtUserNotes.Text = GetUserNotesFromDb(rowid)
+        'AddHandler txtUserNotes.TextChanged, Sub() UserNoteDirty = True
         tabsDocs.TabPages.Add(tpUserNotes)
     End Sub
 

@@ -23,9 +23,9 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tabsMain = New System.Windows.Forms.TabControl()
         Me.tabFanMissions = New System.Windows.Forms.TabPage()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -37,12 +37,8 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.txtFilter = New System.Windows.Forms.ToolStripTextBox()
-        Me.btnPlay = New System.Windows.Forms.ToolStripSplitButton()
-        Me.btnPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
         Me.pbSyncProg = New System.Windows.Forms.ToolStripProgressBar()
         Me.lblSyncProg = New System.Windows.Forms.ToolStripLabel()
-        Me.btnSync = New System.Windows.Forms.ToolStripButton()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.gridFMs = New System.Windows.Forms.DataGridView()
         Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -83,6 +79,10 @@ Partial Class frmMain
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.btnPlay = New System.Windows.Forms.ToolStripSplitButton()
+        Me.btnPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnSync = New System.Windows.Forms.ToolStripButton()
         Me.tabsMain.SuspendLayout()
         Me.tabFanMissions.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -179,28 +179,6 @@ Partial Class frmMain
         Me.txtFilter.Name = "txtFilter"
         Me.txtFilter.Size = New System.Drawing.Size(150, 23)
         '
-        'btnPlay
-        '
-        Me.btnPlay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.btnPlay.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnPlayOriginalMissions, Me.btnUninstallFanMission})
-        Me.btnPlay.Image = CType(resources.GetObject("btnPlay.Image"), System.Drawing.Image)
-        Me.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnPlay.Name = "btnPlay"
-        Me.btnPlay.Size = New System.Drawing.Size(127, 26)
-        Me.btnPlay.Text = "Play Fan Mission"
-        '
-        'btnPlayOriginalMissions
-        '
-        Me.btnPlayOriginalMissions.Name = "btnPlayOriginalMissions"
-        Me.btnPlayOriginalMissions.Size = New System.Drawing.Size(190, 22)
-        Me.btnPlayOriginalMissions.Text = "Play Original Missions"
-        '
-        'btnUninstallFanMission
-        '
-        Me.btnUninstallFanMission.Name = "btnUninstallFanMission"
-        Me.btnUninstallFanMission.Size = New System.Drawing.Size(190, 22)
-        Me.btnUninstallFanMission.Text = "Uninstall Fan Mission"
-        '
         'pbSyncProg
         '
         Me.pbSyncProg.Name = "pbSyncProg"
@@ -214,14 +192,6 @@ Partial Class frmMain
         Me.lblSyncProg.Size = New System.Drawing.Size(70, 26)
         Me.lblSyncProg.Text = "lblSyncProg"
         Me.lblSyncProg.Visible = False
-        '
-        'btnSync
-        '
-        Me.btnSync.Image = CType(resources.GetObject("btnSync.Image"), System.Drawing.Image)
-        Me.btnSync.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnSync.Name = "btnSync"
-        Me.btnSync.Size = New System.Drawing.Size(98, 26)
-        Me.btnSync.Text = "Sync FM Files"
         '
         'SplitContainer1
         '
@@ -535,6 +505,36 @@ Partial Class frmMain
         Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
         Me.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        '
+        'btnPlay
+        '
+        Me.btnPlay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.btnPlay.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnPlayOriginalMissions, Me.btnUninstallFanMission})
+        Me.btnPlay.Image = CType(resources.GetObject("btnPlay.Image"), System.Drawing.Image)
+        Me.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPlay.Name = "btnPlay"
+        Me.btnPlay.Size = New System.Drawing.Size(127, 26)
+        Me.btnPlay.Text = "Play Fan Mission"
+        '
+        'btnPlayOriginalMissions
+        '
+        Me.btnPlayOriginalMissions.Name = "btnPlayOriginalMissions"
+        Me.btnPlayOriginalMissions.Size = New System.Drawing.Size(190, 22)
+        Me.btnPlayOriginalMissions.Text = "Play Original Missions"
+        '
+        'btnUninstallFanMission
+        '
+        Me.btnUninstallFanMission.Name = "btnUninstallFanMission"
+        Me.btnUninstallFanMission.Size = New System.Drawing.Size(190, 22)
+        Me.btnUninstallFanMission.Text = "Uninstall Fan Mission"
+        '
+        'btnSync
+        '
+        Me.btnSync.Image = CType(resources.GetObject("btnSync.Image"), System.Drawing.Image)
+        Me.btnSync.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSync.Name = "btnSync"
+        Me.btnSync.Size = New System.Drawing.Size(98, 26)
+        Me.btnSync.Text = "Sync FM Files"
         '
         'frmMain
         '

@@ -256,6 +256,201 @@ Namespace My
                 Return CType(Me("T2OrigMissions"),Global.System.Collections.Specialized.StringCollection)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<html>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<head><style>.GLTITLE {font-size: 18pt;font-weight: bold;color: 000000;te"& _ 
+            "xt-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLSUBTITLE {font-size: 14pt;fo"& _ 
+            "nt-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLAUTHOR {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: no"& _ 
+            "ne;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLFMINFO {font-size:  10pt;font-weight: bold;co"& _ 
+            "lor: 000000;text-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLBRIEFING {font"& _ 
+            "-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: "& _ 
+            "MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLFMSTRUCTURE {font-size:  10pt;font-weight: bold;color: 000000"& _ 
+            ";text-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLWARNINGS {font-size:  12p"& _ 
+            "t;font-weight: bold; color:FF0000; text-decoration:none;font-family: MS Sans Ser"& _ 
+            "if}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLBUILD {font-size:  10pt;font-weight: bold;color: 000000;text-decoration:"& _ 
+            " none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLINFO {font-size:  10pt;font-weight: bold;c"& _ 
+            "olor: 000000;text-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLLOADING {font"& _ 
+            "-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: "& _ 
+            "MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".GLCOPYRIGHT{font-size:  10pt;font-weight: bold;color: 000000;te"& _ 
+            "xt-decoration: none;font-family: MS Sans Serif}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".INTELLITEXT{border-bottom 1 do"& _ 
+            "uble red}.TEXTRED{color: Red;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTDARKRED{color: DarkRed;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTVIOLETRED{co"& _ 
+            "lor: VioletRed ;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTDARKMAGENTA{color: DarkMagenta ;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTWHITE{color: whi"& _ 
+            "te;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTBLUE{color: Blue;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTDARKBLUE{color: DarkBlue ;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTLIME{color"& _ 
+            ": Lime;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTBLACK{color: Black;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTYELLOW{color: Yellow;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTGREEN{col"& _ 
+            "or: Green;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".TEXTGRAY{color: Gray;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTYELLOW{background-color: yellow;"& _ 
+            "}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTLIGHTYELLOW{background-color: #FFFFCC;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTCREAM{background"& _ 
+            "-color: LemonChiffon;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTLIGHTOLDLACE{background-color: Oldlace;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIG"& _ 
+            "HLIGHTLIME{background-color: lime;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTHONEYDEW{background-color: HoneyD"& _ 
+            "ew;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTRED{background-color: red;color:white;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTPINK{backgrou"& _ 
+            "nd-color: pink;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTTHISTLE{background-color: thistle;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTORANG"& _ 
+            "E{background-color:orange;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTAQUA{background-color:aqua;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&".HIGHLIGHTW"& _ 
+            "HITE{background-color:white;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"body {scrollbar-arrow-color:#000000;scrollbar-dar"& _ 
+            "kshadow-color:#000000;}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</style>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<meta http-equiv='Content-Type' content='text"& _ 
+            "/html; charset=UTF-8' />"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</head>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<body bgcolor='#FFFFFF' ><div style='position"& _ 
+            ":absolute;top:15px;left:3px;'>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"<center><span class=""GLTITLE"">Guidance on scori"& _ 
+            "ng FMs</span></center>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"<br><br><span class=""GLFMINFO"">It is often difficult to"& _ 
+            " actually score and FM once you have played it.<br>Below we will go through a fe"& _ 
+            "w pro's and con's of the best way to score and FM (mainly based on the Thief FMs"& _ 
+            " but this would also apply to other games as well) and an chart that will help y"& _ 
+            "ou to get a good idea of what you should score an FM on."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<br><br>Here are a f"& _ 
+            "ew tips on how best to score FMs."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ol>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HIGHLIGHTHONEYDEW TEXTB"& _ 
+            "LACK"">DO: Start with the concept that the original missions are at a score of 8 "& _ 
+            "or 9, then based on them compare the FMs to that. I.E. if a mission exceeds the "& _ 
+            "original missions then give it 8,9 or 10 based upon your view of how much better"& _ 
+            " the FM is.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HIGHLIGHTHONEYDEW TEXTBLACK"">DO: Consider limita"& _ 
+            "tions of the editor or game engine, if there are difficulties or restrictions as"& _ 
+            " to how the FM can run due to the engine don't let it affect your judgement. I.E"& _ 
+            ". Thief Deadly Shadows is a different engine to Thief 1 and 2 so don't compare t"& _ 
+            "hem against each other, you are judging the work put into the FM.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li c"& _ 
+            "lass=""HIGHLIGHTHONEYDEW TEXTBLACK"">DO: Score only when you have completed the FM"& _ 
+            ", preferably on a couple of different difficulty levels. If you could not comple"& _ 
+            "te because of a fault in the FM consider it unscorable until a fixed version is "& _ 
+            "released.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HIGHLIGHTHONEYDEW TEXTBLACK"">DO: Try an avoid the "& _ 
+            "human reaction of giving everything a high average score.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HI"& _ 
+            "GHLIGHTHONEYDEW TEXTBLACK"">DO: Be forgiving, no fan mission will be 100% perfect"& _ 
+            ", lower your standards slightly to compensate that and score accordingly. Also b"& _ 
+            "e forgiving, if you stumble apon a slightly sticky bit of floor, or a small bit "& _ 
+            "of untextured area in a large mission, DO NOT score lower because of it, everyon"& _ 
+            "e makes mistakes.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HIGHLIGHTHONEYDEW TEXTBLACK"">DO: Score onl"& _ 
+            "y on areas you are supposed to go in the mission, if you find that you have mana"& _ 
+            "ged to scale a building and are seeing bits that look like you should not be see"& _ 
+            "ing (as they are dull, missing textures, etc, don't consider those areas in your"& _ 
+            " final score.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""HIGHLIGHTPINK TEXTBLACK"">DO NOT: Score the FM "& _ 
+            "based upon the game engine. E.G. if you did not like the way Garrett moves in Th"& _ 
+            "ief Deadly Shadows, do not score the FM low because of that as you will only be "& _ 
+            "scoreing the original game and not the custom work put in.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<li class=""H"& _ 
+            "IGHLIGHTPINK TEXTBLACK"">DO NOT: Score the FM based upon if it frustrated you or "& _ 
+            "was not your kind of FM. I.E. if it had lots of undead in it and you don't like "& _ 
+            "undead, don't give it a 1 because of that, be fair and score based upon how well"& _ 
+            " it played, use of content, storyline, etc.</li>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"</ol>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<br>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"Effectively"& _ 
+            " the best way to score is by using the scales below to give an overall result:"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<center>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<script language=""JavaScript"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"function Calculate_score()"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&"{"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"var myscore = 0;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+parseInt(document.all.story.valu"& _ 
+            "e);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+parseInt(document.all.Architecture.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"mysco"& _ 
+            "re = myscore+parseInt(document.all.Playablity.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+par"& _ 
+            "seInt(document.all.Enjoyment.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+parseInt(document.al"& _ 
+            "l.Innovation.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+parseInt(document.all.Custom.value);"& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = myscore+parseInt(document.all.mySize.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = mysc"& _ 
+            "ore+parseInt(document.all.myTheme.value);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"myscore = Math.round((myscore / 8"& _ 
+            "0)*10);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"if (myscore < 4)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"{"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.backgr"& _ 
+            "oundColor='red';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.color='white';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&"else if (myscore < 8)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"{"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.backgroundCol"& _ 
+            "or='LemonChiffon';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.color='black';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"else"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"{"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.backgroundColor='lime';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalvalue.style.color='black';"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"document.all.totalva"& _ 
+            "lue.innerText = myscore;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"}"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"</script>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<table border=""1"" width=""95%"" ce"& _ 
+            "llspacing=""0"" cellpadding=""0"" class=""GLFMINFO"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr class=""HIGHLIGHTTHISTLE "& _ 
+            "TEXTBLACK"" align=""center""><td style=""border-style:outset;"">Scale</td><td style="""& _ 
+            "border-style:outset;"">High (Score 8-10)</td><td style=""border-style:outset;"">Ave"& _ 
+            "rage (Score 4-7)</td><td style=""border-style:outset;"">Low (Score 1-3)</td><td st"& _ 
+            "yle=""border-style:outset;"">Your Score</td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHIS"& _ 
+            "TLE TEXTBLACK"" style=""border-style:outset;"" align=""right"">Story</td><td class=""H"& _ 
+            "IGHLIGHTHONEYDEW TEXTBLACK"">You were drawn into the story as the FM progressed</"& _ 
+            "td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBLACK"">It was interesting but the story w"& _ 
+            "as just background to the events on screen and wasn't really that gripping</td><"& _ 
+            "td class=""HIGHLIGHTPINK TEXTBLACK"">You had no idea what was going on (this does "& _ 
+            "not count for foreign language FMs)</td><td style=""border-style:outset;""><select"& _ 
+            " name=""story"" onChange=""Calculate_score();""><option value=""10"">10</option><optio"& _ 
+            "n value=""9"">9</option><option value=""8"">8</option><option value=""7"">7</option><o"& _ 
+            "ption value=""6"">6</option><option value=""5"">5</option><option value=""4"">4</optio"& _ 
+            "n><option value=""3"">3</option><option value=""2"">2</option><option value=""1"">1</o"& _ 
+            "ption></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHISTLE TEXTBLACK"" style="""& _ 
+            "border-style:outset;"" align=""right"">Architecture</td><td class=""HIGHLIGHTHONEYDE"& _ 
+            "W TEXTBLACK"">The scenery was stunning, there were few or no big, same texture, b"& _ 
+            "lank or dull areas of wall or floor.</td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBLA"& _ 
+            "CK"">There were some good designed buildings or scenery, however there was also s"& _ 
+            "ome big areas of blank almost unfinished sections.</td><td class=""HIGHLIGHTPINK "& _ 
+            "TEXTBLACK"">Everything looked the same, it was very square and lacked any kind of"& _ 
+            " detail.</td><td style=""border-style:outset;""><select name=""Architecture"" onChan"& _ 
+            "ge=""Calculate_score();""><option value=""10"">10</option><option value=""9"">9</optio"& _ 
+            "n><option value=""8"">8</option><option value=""7"">7</option><option value=""6"">6</o"& _ 
+            "ption><option value=""5"">5</option><option value=""4"">4</option><option value=""3"">"& _ 
+            "3</option><option value=""2"">2</option><option value=""1"">1</option></select></td>"& _ 
+            "</tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHISTLE TEXTBLACK"" style=""border-style:outset;"& _ 
+            """ align=""right"">Playablity</td><td class=""HIGHLIGHTHONEYDEW TEXTBLACK"">You could"& _ 
+            " do everything you expected to be able to do, puzzles were challenging but not i"& _ 
+            "mpossible and tasks were not a chore.</td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBL"& _ 
+            "ACK"">You had trouble with some tasks not working properly or puzzles being too d"& _ 
+            "ifficult.</td><td class=""HIGHLIGHTPINK TEXTBLACK"">A puzzle solution made no sens"& _ 
+            "e or didn't work at all. Tasks felt repetative, too long winded or were very dul"& _ 
+            "l.</td><td style=""border-style:outset;""><select name=""Playablity"" onChange=""Calc"& _ 
+            "ulate_score();""><option value=""10"">10</option><option value=""9"">9</option><optio"& _ 
+            "n value=""8"">8</option><option value=""7"">7</option><option value=""6"">6</option><o"& _ 
+            "ption value=""5"">5</option><option value=""4"">4</option><option value=""3"">3</optio"& _ 
+            "n><option value=""2"">2</option><option value=""1"">1</option></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHISTLE TEXTBLACK"" style=""border-style:outset;"" align="& _ 
+            """right"">Enjoyment</td><td class=""HIGHLIGHTHONEYDEW TEXTBLACK"">You have played it"& _ 
+            " once through and want to play it again and again. It was great fun to play and "& _ 
+            "you were dissapointed when it ended.</td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBLA"& _ 
+            "CK"">It was enjoyable, but you couldn't help but feel it was missing something.</"& _ 
+            "td><td class=""HIGHLIGHTPINK TEXTBLACK"">You couldn't wait for the mission to end,"& _ 
+            " it was dull, really frustrating and not worth playing.</td><td style=""border-st"& _ 
+            "yle:outset;""><select name=""Enjoyment"" onChange=""Calculate_score();""><option valu"& _ 
+            "e=""10"">10</option><option value=""9"">9</option><option value=""8"">8</option><optio"& _ 
+            "n value=""7"">7</option><option value=""6"">6</option><option value=""5"">5</option><o"& _ 
+            "ption value=""4"">4</option><option value=""3"">3</option><option value=""2"">2</optio"& _ 
+            "n><option value=""1"">1</option></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTH"& _ 
+            "ISTLE TEXTBLACK"" style=""border-style:outset;"" align=""right"">Innovation</td><td c"& _ 
+            "lass=""HIGHLIGHTHONEYDEW TEXTBLACK"">The FM broke new ground, there were things ne"& _ 
+            "ver tried before which worked really well.</td><td class=""HIGHLIGHTLIGHTYELLOW T"& _ 
+            "EXTBLACK"">There were things not often used or cleverly put together but they may"& _ 
+            " not have been used to their best effect.</td><td class=""HIGHLIGHTPINK TEXTBLACK"& _ 
+            """>There was nothing new in the FM, it lacked a lot of basic standards (switches,"& _ 
+            " secrets, scripting, all where applicable).</td><td style=""border-style:outset;"""& _ 
+            "><select name=""Innovation"" onChange=""Calculate_score();""><option value=""10"">10</"& _ 
+            "option><option value=""9"">9</option><option value=""8"">8</option><option value=""7"""& _ 
+            ">7</option><option value=""6"">6</option><option value=""5"">5</option><option value"& _ 
+            "=""4"">4</option><option value=""3"">3</option><option value=""2"">2</option><option v"& _ 
+            "alue=""1"">1</option></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHISTLE TEXTB"& _ 
+            "LACK"" style=""border-style:outset;"" align=""right"">Custom Content</td><td class=""H"& _ 
+            "IGHLIGHTHONEYDEW TEXTBLACK"">It was packed full of new objects, textures, creatur"& _ 
+            "es, and gameplay.</td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBLACK"">It had some new"& _ 
+            " objects but they may not have been suitable, or it had some new textures which "& _ 
+            "may not have been best suited.</td><td class=""HIGHLIGHTPINK TEXTBLACK"">There was"& _ 
+            " nothing new in the FM, and what default content was used may have been used bad"& _ 
+            "ly.</td><td style=""border-style:outset;""><select name=""Custom"" onChange=""Calcula"& _ 
+            "te_score();""><option value=""10"">10</option><option value=""9"">9</option><option v"& _ 
+            "alue=""8"">8</option><option value=""7"">7</option><option value=""6"">6</option><opti"& _ 
+            "on value=""5"">5</option><option value=""4"">4</option><option value=""3"">3</option><"& _ 
+            "option value=""2"">2</option><option value=""1"">1</option></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<"& _ 
+            "tr><td class=""HIGHLIGHTTHISTLE TEXTBLACK"" style=""border-style:outset;"" align=""ri"& _ 
+            "ght"">Size</td><td class=""HIGHLIGHTHONEYDEW TEXTBLACK"">The FM was big, or felt bi"& _ 
+            "g but was also unique around each corner (i.e. it wasn't repeated over and over,"& _ 
+            " unless the story called for that).</td><td class=""HIGHLIGHTLIGHTYELLOW TEXTBLAC"& _ 
+            "K"">It was fairly large in size, but you felt it could have been bigger.</td><td "& _ 
+            "class=""HIGHLIGHTPINK TEXTBLACK"">You completed it in under 5 minutes without chea"& _ 
+            "ting, it is not really re-playable.</td><td style=""border-style:outset;""><select"& _ 
+            " name=""mySize"" onChange=""Calculate_score();""><option value=""10"">10</option><opti"& _ 
+            "on value=""9"">9</option><option value=""8"">8</option><option value=""7"">7</option><"& _ 
+            "option value=""6"">6</option><option value=""5"">5</option><option value=""4"">4</opti"& _ 
+            "on><option value=""3"">3</option><option value=""2"">2</option><option value=""1"">1</"& _ 
+            "option></select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr><td class=""HIGHLIGHTTHISTLE TEXTBLACK"" style="& _ 
+            """border-style:outset;"" align=""right"">Theme / Setting</td><td class=""HIGHLIGHTHON"& _ 
+            "EYDEW TEXTBLACK"">The theme of the FM suited the story, the sets made sense and w"& _ 
+            "ere suitable. There was also the right balance of AI and puzzles.</td><td class="& _ 
+            """HIGHLIGHTLIGHTYELLOW TEXTBLACK"">Sets were ok, but some things did not and were "& _ 
+            "not part of the story (for example: a zombie freely walking round a mansion full"& _ 
+            " of guards).</td><td class=""HIGHLIGHTPINK TEXTBLACK"">The theme was overdone, the"& _ 
+            " settings made no sense to the story (for example: there were too many zombies/g"& _ 
+            "uards for the mission, or you suddenly found yourself on a boat with no explanat"& _ 
+            "ion of how you got there).</td><td style=""border-style:outset;""><select name=""my"& _ 
+            "Theme"" onChange=""Calculate_score();""><option value=""10"">10</option><option value"& _ 
+            "=""9"">9</option><option value=""8"">8</option><option value=""7"">7</option><option v"& _ 
+            "alue=""6"">6</option><option value=""5"">5</option><option value=""4"">4</option><opti"& _ 
+            "on value=""3"">3</option><option value=""2"">2</option><option value=""1"">1</option><"& _ 
+            "/select></td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<tr class=""HIGHLIGHTTHISTLE TEXTBLACK""><td style=""border-"& _ 
+            "style:outset;"" colspan=""4""><BIG>Total</BIG></td><td id=""totalvalue"" style=""borde"& _ 
+            "r-style:outset;"" align=""center"">10</td></tr>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"</table>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<br>Above all rememb"& _ 
+            "er that people are making these FMs for you for free, normally a lot of love and"& _ 
+            " hard work go into them. So if you do think a Fan Mission is lacking somewhat, l"& _ 
+            "et the author know and give them some constructive suggestions on how to improve"& _ 
+            " them."&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"</span>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</body></html>")>  _
+        Public ReadOnly Property GLScoringGuidelines() As String
+            Get
+                Return CType(Me("GLScoringGuidelines"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

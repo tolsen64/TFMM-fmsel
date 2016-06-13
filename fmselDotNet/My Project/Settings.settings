@@ -104,5 +104,111 @@
   &lt;string&gt;15 - Sabotage at Soulforge&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="GLScoringGuidelines" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;html&gt;
+&lt;head&gt;&lt;style&gt;.GLTITLE {font-size: 18pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLSUBTITLE {font-size: 14pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLAUTHOR {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLFMINFO {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLBRIEFING {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLFMSTRUCTURE {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLWARNINGS {font-size:  12pt;font-weight: bold; color:FF0000; text-decoration:none;font-family: MS Sans Serif}
+.GLBUILD {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLINFO {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLLOADING {font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.GLCOPYRIGHT{font-size:  10pt;font-weight: bold;color: 000000;text-decoration: none;font-family: MS Sans Serif}
+.INTELLITEXT{border-bottom 1 double red}.TEXTRED{color: Red;}
+.TEXTDARKRED{color: DarkRed;}
+.TEXTVIOLETRED{color: VioletRed ;}
+.TEXTDARKMAGENTA{color: DarkMagenta ;}
+.TEXTWHITE{color: white;}
+.TEXTBLUE{color: Blue;}
+.TEXTDARKBLUE{color: DarkBlue ;}
+.TEXTLIME{color: Lime;}
+.TEXTBLACK{color: Black;}
+.TEXTYELLOW{color: Yellow;}
+.TEXTGREEN{color: Green;}
+.TEXTGRAY{color: Gray;}
+.HIGHLIGHTYELLOW{background-color: yellow;}
+.HIGHLIGHTLIGHTYELLOW{background-color: #FFFFCC;}
+.HIGHLIGHTCREAM{background-color: LemonChiffon;}
+.HIGHLIGHTLIGHTOLDLACE{background-color: Oldlace;}
+.HIGHLIGHTLIME{background-color: lime;}
+.HIGHLIGHTHONEYDEW{background-color: HoneyDew;}
+.HIGHLIGHTRED{background-color: red;color:white;}
+.HIGHLIGHTPINK{background-color: pink;}
+.HIGHLIGHTTHISTLE{background-color: thistle;}
+.HIGHLIGHTORANGE{background-color:orange;}
+.HIGHLIGHTAQUA{background-color:aqua;}
+.HIGHLIGHTWHITE{background-color:white;}
+body {scrollbar-arrow-color:#000000;scrollbar-darkshadow-color:#000000;}
+&lt;/style&gt;
+&lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /&gt;
+&lt;/head&gt;
+&lt;body bgcolor='#FFFFFF' &gt;&lt;div style='position:absolute;top:15px;left:3px;'&gt;
+	&lt;center&gt;&lt;span class="GLTITLE"&gt;Guidance on scoring FMs&lt;/span&gt;&lt;/center&gt;
+	&lt;br&gt;&lt;br&gt;&lt;span class="GLFMINFO"&gt;It is often difficult to actually score and FM once you have played it.&lt;br&gt;Below we will go through a few pro's and con's of the best way to score and FM (mainly based on the Thief FMs but this would also apply to other games as well) and an chart that will help you to get a good idea of what you should score an FM on.
+		&lt;br&gt;&lt;br&gt;Here are a few tips on how best to score FMs.
+		&lt;ol&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Start with the concept that the original missions are at a score of 8 or 9, then based on them compare the FMs to that. I.E. if a mission exceeds the original missions then give it 8,9 or 10 based upon your view of how much better the FM is.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Consider limitations of the editor or game engine, if there are difficulties or restrictions as to how the FM can run due to the engine don't let it affect your judgement. I.E. Thief Deadly Shadows is a different engine to Thief 1 and 2 so don't compare them against each other, you are judging the work put into the FM.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Score only when you have completed the FM, preferably on a couple of different difficulty levels. If you could not complete because of a fault in the FM consider it unscorable until a fixed version is released.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Try an avoid the human reaction of giving everything a high average score.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Be forgiving, no fan mission will be 100% perfect, lower your standards slightly to compensate that and score accordingly. Also be forgiving, if you stumble apon a slightly sticky bit of floor, or a small bit of untextured area in a large mission, DO NOT score lower because of it, everyone makes mistakes.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;DO: Score only on areas you are supposed to go in the mission, if you find that you have managed to scale a building and are seeing bits that look like you should not be seeing (as they are dull, missing textures, etc, don't consider those areas in your final score.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTPINK TEXTBLACK"&gt;DO NOT: Score the FM based upon the game engine. E.G. if you did not like the way Garrett moves in Thief Deadly Shadows, do not score the FM low because of that as you will only be scoreing the original game and not the custom work put in.&lt;/li&gt;
+			&lt;li class="HIGHLIGHTPINK TEXTBLACK"&gt;DO NOT: Score the FM based upon if it frustrated you or was not your kind of FM. I.E. if it had lots of undead in it and you don't like undead, don't give it a 1 because of that, be fair and score based upon how well it played, use of content, storyline, etc.&lt;/li&gt;
+		&lt;/ol&gt;
+		&lt;br&gt;
+		Effectively the best way to score is by using the scales below to give an overall result:
+		&lt;center&gt;
+		&lt;script language="JavaScript"&gt;
+			function Calculate_score()
+				{
+				var myscore = 0;
+				myscore = myscore+parseInt(document.all.story.value);
+				myscore = myscore+parseInt(document.all.Architecture.value);
+				myscore = myscore+parseInt(document.all.Playablity.value);
+				myscore = myscore+parseInt(document.all.Enjoyment.value);
+				myscore = myscore+parseInt(document.all.Innovation.value);
+				myscore = myscore+parseInt(document.all.Custom.value);
+				myscore = myscore+parseInt(document.all.mySize.value);
+				myscore = myscore+parseInt(document.all.myTheme.value);
+				myscore = Math.round((myscore / 80)*10);
+				if (myscore &lt; 4)
+					{
+					document.all.totalvalue.style.backgroundColor='red';
+					document.all.totalvalue.style.color='white';
+					}
+				else if (myscore &lt; 8)
+					{
+					document.all.totalvalue.style.backgroundColor='LemonChiffon';
+					document.all.totalvalue.style.color='black';
+					}
+				else
+					{
+					document.all.totalvalue.style.backgroundColor='lime';
+					document.all.totalvalue.style.color='black';
+					}
+				document.all.totalvalue.innerText = myscore;
+				}
+		&lt;/script&gt;
+		&lt;table border="1" width="95%" cellspacing="0" cellpadding="0" class="GLFMINFO"&gt;
+			&lt;tr class="HIGHLIGHTTHISTLE TEXTBLACK" align="center"&gt;&lt;td style="border-style:outset;"&gt;Scale&lt;/td&gt;&lt;td style="border-style:outset;"&gt;High (Score 8-10)&lt;/td&gt;&lt;td style="border-style:outset;"&gt;Average (Score 4-7)&lt;/td&gt;&lt;td style="border-style:outset;"&gt;Low (Score 1-3)&lt;/td&gt;&lt;td style="border-style:outset;"&gt;Your Score&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Story&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;You were drawn into the story as the FM progressed&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;It was interesting but the story was just background to the events on screen and wasn't really that gripping&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;You had no idea what was going on (this does not count for foreign language FMs)&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="story" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Architecture&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;The scenery was stunning, there were few or no big, same texture, blank or dull areas of wall or floor.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;There were some good designed buildings or scenery, however there was also some big areas of blank almost unfinished sections.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;Everything looked the same, it was very square and lacked any kind of detail.&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="Architecture" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Playablity&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;You could do everything you expected to be able to do, puzzles were challenging but not impossible and tasks were not a chore.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;You had trouble with some tasks not working properly or puzzles being too difficult.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;A puzzle solution made no sense or didn't work at all. Tasks felt repetative, too long winded or were very dull.&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="Playablity" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Enjoyment&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;You have played it once through and want to play it again and again. It was great fun to play and you were dissapointed when it ended.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;It was enjoyable, but you couldn't help but feel it was missing something.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;You couldn't wait for the mission to end, it was dull, really frustrating and not worth playing.&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="Enjoyment" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Innovation&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;The FM broke new ground, there were things never tried before which worked really well.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;There were things not often used or cleverly put together but they may not have been used to their best effect.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;There was nothing new in the FM, it lacked a lot of basic standards (switches, secrets, scripting, all where applicable).&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="Innovation" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Custom Content&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;It was packed full of new objects, textures, creatures, and gameplay.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;It had some new objects but they may not have been suitable, or it had some new textures which may not have been best suited.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;There was nothing new in the FM, and what default content was used may have been used badly.&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="Custom" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Size&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;The FM was big, or felt big but was also unique around each corner (i.e. it wasn't repeated over and over, unless the story called for that).&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;It was fairly large in size, but you felt it could have been bigger.&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;You completed it in under 5 minutes without cheating, it is not really re-playable.&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="mySize" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td class="HIGHLIGHTTHISTLE TEXTBLACK" style="border-style:outset;" align="right"&gt;Theme / Setting&lt;/td&gt;&lt;td class="HIGHLIGHTHONEYDEW TEXTBLACK"&gt;The theme of the FM suited the story, the sets made sense and were suitable. There was also the right balance of AI and puzzles.&lt;/td&gt;&lt;td class="HIGHLIGHTLIGHTYELLOW TEXTBLACK"&gt;Sets were ok, but some things did not and were not part of the story (for example: a zombie freely walking round a mansion full of guards).&lt;/td&gt;&lt;td class="HIGHLIGHTPINK TEXTBLACK"&gt;The theme was overdone, the settings made no sense to the story (for example: there were too many zombies/guards for the mission, or you suddenly found yourself on a boat with no explanation of how you got there).&lt;/td&gt;&lt;td style="border-style:outset;"&gt;&lt;select name="myTheme" onChange="Calculate_score();"&gt;&lt;option value="10"&gt;10&lt;/option&gt;&lt;option value="9"&gt;9&lt;/option&gt;&lt;option value="8"&gt;8&lt;/option&gt;&lt;option value="7"&gt;7&lt;/option&gt;&lt;option value="6"&gt;6&lt;/option&gt;&lt;option value="5"&gt;5&lt;/option&gt;&lt;option value="4"&gt;4&lt;/option&gt;&lt;option value="3"&gt;3&lt;/option&gt;&lt;option value="2"&gt;2&lt;/option&gt;&lt;option value="1"&gt;1&lt;/option&gt;&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr class="HIGHLIGHTTHISTLE TEXTBLACK"&gt;&lt;td style="border-style:outset;" colspan="4"&gt;&lt;BIG&gt;Total&lt;/BIG&gt;&lt;/td&gt;&lt;td id="totalvalue" style="border-style:outset;" align="center"&gt;10&lt;/td&gt;&lt;/tr&gt;
+		&lt;/table&gt;
+		&lt;br&gt;Above all remember that people are making these FMs for you for free, normally a lot of love and hard work go into them. So if you do think a Fan Mission is lacking somewhat, let the author know and give them some constructive suggestions on how to improve them.
+	&lt;/span&gt;
+
+&lt;/body&gt;&lt;/html&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
