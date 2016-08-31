@@ -1,3 +1,6 @@
+# Notice
+This project is on hiatus. Someone else released a mission loader called NewDarkLoader which seems to have attracted the bulk of the Thief Community and the thread for TFMM has died. So due to lack of interest, and me not wanting to be in competition with a similar project, I will not be updating this project any further. You can read about it and download it [here](http://www.ttlg.com/forums/showthread.php?t=146917&highlight=newdarkloader "NewDarkLoader").
+
 # TFMM-fmsel
 Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; Thief 2 and for the Sneaky Upgraded version of Thief 3. You need to have the .NET Framework 4.6.1 installed on your pc for this to work.
 
@@ -29,5 +32,3 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 11. Double-clicking in a file or folder column will open the file or folder with the default program.
 12. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
 13. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
-
-
