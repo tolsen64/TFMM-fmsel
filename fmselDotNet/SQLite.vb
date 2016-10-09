@@ -8,7 +8,7 @@ Module SQLite
     Public dtMissions As DataTable
     Public dvMissions As DataView
 
-    Private dbFile As String = AppPath & "\TFMM.db"
+    Private dbFile As String = Path.Combine(AppPath, "TFMM.db")
     Private ConnStr As String = "DataSource=" & dbFile & ";Version=3;"
 
     Public Sub InitializeDb()
@@ -76,8 +76,8 @@ Module SQLite
             Try
                 rslt = .ExecuteNonQuery
             Catch ex As SQLiteException
-                File.AppendText(AppPath & "ERROR_LIST.txt").WriteLine(Now.ToString & " - " & ex.Message)
-                File.AppendText(AppPath & "SQL_ERROR_STATEMENTS.txt").WriteLine(Now.ToString & " - " & .CommandText)
+                File.AppendText(Path.Combine(AppPath, "ERROR_LIST.txt")).WriteLine(Now.ToString & " - " & ex.Message)
+                File.AppendText(Path.Combine(AppPath, "SQL_ERROR_STATEMENTS.txt")).WriteLine(Now.ToString & " - " & .CommandText)
             End Try
             If rslt > 0 Then
                 .CommandText = "SELECT last_insert_rowid()"
@@ -91,8 +91,8 @@ Module SQLite
                     Try
                         .ExecuteNonQuery()
                     Catch ex As SQLiteException
-                        File.AppendText(AppPath & "ERROR_LIST.txt").WriteLine(Now.ToString & " - " & ex.Message)
-                        File.AppendText(AppPath & "SQL_ERROR_STATEMENTS.txt").WriteLine(Now.ToString & " - " & .CommandText)
+                        File.AppendText(Path.Combine(AppPath, "ERROR_LIST.txt")).WriteLine(Now.ToString & " - " & ex.Message)
+                        File.AppendText(Path.Combine(AppPath, "SQL_ERROR_STATEMENTS.txt")).WriteLine(Now.ToString & " - " & .CommandText)
                     End Try
                 Next
             End If

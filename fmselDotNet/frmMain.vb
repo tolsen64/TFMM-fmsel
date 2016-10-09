@@ -13,6 +13,7 @@ Public Class frmMain
     Inherits Form
 
     Dim WithEvents cbMaxCash As CheckBox
+    Dim WithEvents cbReturnToTFMM As CheckBox
     Private Const UserCfg As String = "USER.CFG"
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -58,11 +59,15 @@ Public Class frmMain
         If GameVersion = "T1" Or GameVersion = "T2" Then
             'Add checkbox to status strip
             cbMaxCash = New CheckBox With {.Text = "Max Cash"}
-            Dim tsItem As New ToolStripControlHost(cbMaxCash) With {.Alignment = ToolStripItemAlignment.Right}
-            ToolStrip1.Items.Add(tsItem)
+            ToolStrip1.Items.Add(New ToolStripControlHost(cbMaxCash) With {.Alignment = ToolStripItemAlignment.Right})
             mnuMaxCash.Visible = True
             MakeBakup(Path.Combine(GamePath, UserCfg))
         End If
+
+        cbReturnToTFMM = New CheckBox With {.Text = "Return to TFMM"}
+        ToolStrip1.Items.Add(New ToolStripControlHost(cbReturnToTFMM) With {.Alignment = ToolStripItemAlignment.Right})
+
+        SetMenuItemVisibility()
 
         If gridFMs.RowCount > 0 Then
             gridFMs.Item(cols.FileName, 0).Selected = True
@@ -72,6 +77,39 @@ Public Class frmMain
         AddHandler dtMissions.RowChanged, AddressOf dtMissions_RowChanged
         AddHandler dvMissions.ListChanged, Sub(sndr As Object, ee As ListChangedEventArgs) UpdateCounts()
         AddHandler fmselSync.SyncInfo, AddressOf SyncInfoEventHandler
+    End Sub
+
+    Private Sub SetMenuItemVisibility()
+        For Each mi As ToolStripMenuItem In SwitchGameToolStripMenuItem.DropDownItems
+            mi.Visible = Not mi.Name.StartsWith(GameVersion)
+        Next
+        cbReturnToTFMM.Checked = ReturnToTFMMDefault
+        mnuReturnToTFMM.Checked = ReturnToTFMMDefault
+        If cbMaxCash IsNot Nothing Then
+            cbMaxCash.Checked = MaxCashDefault
+            mnuMaxCash.Checked = MaxCashDefault
+        End If
+    End Sub
+
+    Private Sub SwitchGame(sender As Object, e As EventArgs) Handles SS2ToolStripMenuItem.Click, T1GoldToolStripMenuItem.Click, T2ToolStripMenuItem.Click, T3ToolStripMenuItem.Click
+        Dim si As New ProcessStartInfo
+        Dim fi As FileInfo = Nothing
+        With CType(sender, ToolStripMenuItem)
+            Select Case .Name.Substring(0, 2)
+                Case "SS" : If SS2GameExe <> "" Then fi = New FileInfo(SS2GameExe)
+                Case "T1" : If T1GameExe <> "" Then fi = New FileInfo(T1GameExe)
+                Case "T2" : If T2GameExe <> "" Then fi = New FileInfo(T2GameExe)
+                Case "T3" : If T3GameExe <> "" Then fi = New FileInfo(T3GameExe)
+            End Select
+        End With
+        If fi IsNot Nothing Then
+            si.FileName = fi.Name
+            si.WorkingDirectory = fi.DirectoryName
+            Process.Start(si)
+            Close()
+        Else
+            MsgBox("Configure Game EXE's in settings.", vbExclamation)
+        End If
     End Sub
 
     Private Sub MakeBakup(Filename As String)
@@ -130,6 +168,7 @@ Public Class frmMain
         With New dlgSettings
             If .ShowDialog(Me) = DialogResult.OK Then
                 LoadFMSelCfg()
+                SetMenuItemVisibility()
             End If
         End With
     End Sub
@@ -162,6 +201,7 @@ Public Class frmMain
                                        MakeBakup(Path.Combine(destFldr, UserCfg))
                                        ApplyMaxCash(Path.Combine(destFldr, UserCfg))
                                        SelectedFM = .Cells(cols.InstallFolder).Value.ToString
+                                       RunAfterGameExit = cbReturnToTFMM.Checked
                                        FMSelReturnValue = eFMSelReturn.kSelFMRet_OK
                                        Close()
                                    Else
@@ -222,7 +262,7 @@ Public Class frmMain
         With New FileInfo(sourceZip)
             If File.Exists(.FullName.Replace(.Extension, ".saves")) Then
                 Using sze As New SevenZipExtractor(.FullName.Replace(.Extension, ".saves"))
-                    sze.ExtractArchive(destFldr & If(GameVersion = "T3", "\SaveGames", ""))
+                    sze.ExtractArchive(Path.Combine(destFldr, If(GameVersion = "T3", "SaveGames", "")))
                 End Using
             End If
         End With
@@ -407,7 +447,7 @@ Public Class frmMain
         With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
             Dim GameVer As String = .Cells(cols.Ver).Value.ToString
             Dim GameIsMatch As Boolean = (GameVer = GameVersion)
-            Dim GameIsInstalled As Boolean = Directory.Exists(FMRootPath & "\" & .Cells(cols.InstallFolder).Value.ToString)
+            Dim GameIsInstalled As Boolean = Directory.Exists(Path.Combine(FMRootPath, .Cells(cols.InstallFolder).Value.ToString))
             mnuPlayFanMission.Visible = GameIsMatch
             cmnuPlayFanMission.Visible = GameIsMatch
             btnUninstallFanMission.Visible = GameIsInstalled
@@ -508,7 +548,7 @@ Public Class frmMain
             Case cols.Directory
                 Process.Start(gridFMs.Item(cols.Directory, e.RowIndex).Value.ToString)
             Case cols.FileName
-                Process.Start(gridFMs.Item(cols.Directory, e.RowIndex).Value.ToString & "\" & gridFMs.Item(cols.FileName, e.RowIndex).Value.ToString)
+                Process.Start(Path.Combine(gridFMs.Item(cols.Directory, e.RowIndex).Value.ToString, gridFMs.Item(cols.FileName, e.RowIndex).Value.ToString))
             Case cols.InstallFolder
                 Dim InstPath As String = Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder))
                 If Directory.Exists(InstPath) Then
@@ -541,6 +581,14 @@ Public Class frmMain
         mnuMaxCash.Checked = cbMaxCash.Checked
     End Sub
 
+    Private Sub mnuReturnToTFMM_Click(sender As Object, e As EventArgs) Handles mnuReturnToTFMM.Click
+        cbReturnToTFMM.Checked = mnuReturnToTFMM.Checked
+    End Sub
+
+    Private Sub cbReturnToTFMM_Click(sender As Object, e As EventArgs) Handles cbReturnToTFMM.Click
+        mnuReturnToTFMM.Checked = cbReturnToTFMM.Checked
+    End Sub
+
 #Region "SevenZip Event Handlers"
 
     'Private Sub sze_Extracting(sender As Object, e As SevenZip.ProgressEventArgs) 'Handles sze.Extracting
@@ -556,7 +604,7 @@ Public Class frmMain
 
     Private Sub sze_FileExtractionFinished(sender As Object, e As FileInfoEventArgs) 'Handles sze.FileExtractionFinished
         If GameVersion <> "T3" Then    'no decoding necessary for TDS
-            Dim fi As New FileInfo(UnzipDestFolder & "\" & e.FileInfo.FileName)
+            Dim fi As New FileInfo(Path.Combine(UnzipDestFolder, e.FileInfo.FileName))
             Select Case fi.Extension.ToLower
                 Case ".mp3", ".ogg" : ConvertToWav(fi)
             End Select

@@ -57,6 +57,7 @@ Public Module fmsel
             .Join()  'blocks the calling thread until thd exits.
         End With
 
+        data = FMSelData
         Return FMSelReturnValue
     End Function
 
@@ -72,8 +73,7 @@ Public Module fmsel
     End Sub
 
     Private Function CurrentDomain_AssemblyResolve(sender As Object, args As ResolveEventArgs) As Assembly
-        'MsgBox(sender.GetType.ToString & vbCrLf & vbCrLf & args.RequestingAssembly.ToString & vbCrLf & vbCrLf & args.Name)
-        Dim AssemblyName As String = AppPath & args.Name.Split(","c)(0) & ".dll"
+        Dim AssemblyName As String = Path.Combine(AppPath, args.Name.Split(","c)(0) & ".dll")
         Dim fi As New FileInfo(AssemblyName)
         If fi.Exists Then
             Return Assembly.LoadFrom(AssemblyName)
@@ -97,7 +97,7 @@ Public Module fmsel
     ''' <returns></returns>
     Public ReadOnly Property AppPath As String
         Get
-            Return (My.Application.Info.DirectoryPath & "\").Replace("\\", "\")
+            Return My.Application.Info.DirectoryPath
         End Get
     End Property
 
@@ -107,7 +107,7 @@ Public Module fmsel
     ''' <returns></returns>
     Public ReadOnly Property GamePath As String
         Get
-            Return (AppDomain.CurrentDomain.BaseDirectory & "\").Replace("\\", "\")
+            Return AppDomain.CurrentDomain.BaseDirectory
         End Get
     End Property
 
@@ -148,7 +148,7 @@ Public Module fmsel
             ElseIf FMSelData.sGameVersion.StartsWith("Thief 3") Then
                 Return "T3"
             ElseIf FMSelData.sGameVersion.StartsWith("Thief 2") Then
-                If File.Exists(GamePath & "DARKINST.CFG") Then
+                If File.Exists(Path.Combine(GamePath, "DARKINST.CFG")) Then
                     Return "T2"
                 Else
                     Return "T1"

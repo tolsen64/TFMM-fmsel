@@ -23,9 +23,9 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.tabsMain = New System.Windows.Forms.TabControl()
         Me.tabFanMissions = New System.Windows.Forms.TabPage()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -37,8 +37,12 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.txtFilter = New System.Windows.Forms.ToolStripTextBox()
+        Me.btnPlay = New System.Windows.Forms.ToolStripSplitButton()
+        Me.btnPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
         Me.pbSyncProg = New System.Windows.Forms.ToolStripProgressBar()
         Me.lblSyncProg = New System.Windows.Forms.ToolStripLabel()
+        Me.btnSync = New System.Windows.Forms.ToolStripButton()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.gridFMs = New System.Windows.Forms.DataGridView()
         Me.colId = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,6 +69,7 @@ Partial Class frmMain
         Me.mnuPlayFanMission = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuReturnToTFMM = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMaxCash = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SettingsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,16 +78,16 @@ Partial Class frmMain
         Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAllMissions = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOnlyGameMissions = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TroubleshootingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowGameInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SwitchGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SS2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.T1GoldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.T2ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.T3ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowGameInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.btnPlay = New System.Windows.Forms.ToolStripSplitButton()
-        Me.btnPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSync = New System.Windows.Forms.ToolStripButton()
         Me.tabsMain.SuspendLayout()
         Me.tabFanMissions.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -179,6 +184,28 @@ Partial Class frmMain
         Me.txtFilter.Name = "txtFilter"
         Me.txtFilter.Size = New System.Drawing.Size(150, 23)
         '
+        'btnPlay
+        '
+        Me.btnPlay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.btnPlay.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnPlayOriginalMissions, Me.btnUninstallFanMission})
+        Me.btnPlay.Image = CType(resources.GetObject("btnPlay.Image"), System.Drawing.Image)
+        Me.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPlay.Name = "btnPlay"
+        Me.btnPlay.Size = New System.Drawing.Size(127, 26)
+        Me.btnPlay.Text = "Play Fan Mission"
+        '
+        'btnPlayOriginalMissions
+        '
+        Me.btnPlayOriginalMissions.Name = "btnPlayOriginalMissions"
+        Me.btnPlayOriginalMissions.Size = New System.Drawing.Size(190, 22)
+        Me.btnPlayOriginalMissions.Text = "Play Original Missions"
+        '
+        'btnUninstallFanMission
+        '
+        Me.btnUninstallFanMission.Name = "btnUninstallFanMission"
+        Me.btnUninstallFanMission.Size = New System.Drawing.Size(190, 22)
+        Me.btnUninstallFanMission.Text = "Uninstall Fan Mission"
+        '
         'pbSyncProg
         '
         Me.pbSyncProg.Name = "pbSyncProg"
@@ -192,6 +219,14 @@ Partial Class frmMain
         Me.lblSyncProg.Size = New System.Drawing.Size(70, 26)
         Me.lblSyncProg.Text = "lblSyncProg"
         Me.lblSyncProg.Visible = False
+        '
+        'btnSync
+        '
+        Me.btnSync.Image = CType(resources.GetObject("btnSync.Image"), System.Drawing.Image)
+        Me.btnSync.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSync.Name = "btnSync"
+        Me.btnSync.Size = New System.Drawing.Size(98, 26)
+        Me.btnSync.Text = "Sync FM Files"
         '
         'SplitContainer1
         '
@@ -382,7 +417,7 @@ Partial Class frmMain
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.TroubleshootingToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ViewToolStripMenuItem, Me.SwitchGameToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1264, 24)
@@ -391,7 +426,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.mnuUninstallFanMission, Me.mnuMaxCash, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.mnuUninstallFanMission, Me.mnuReturnToTFMM, Me.mnuMaxCash, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -413,6 +448,13 @@ Partial Class frmMain
         Me.mnuUninstallFanMission.Name = "mnuUninstallFanMission"
         Me.mnuUninstallFanMission.Size = New System.Drawing.Size(190, 22)
         Me.mnuUninstallFanMission.Text = "Uninstall Fan Mission"
+        '
+        'mnuReturnToTFMM
+        '
+        Me.mnuReturnToTFMM.CheckOnClick = True
+        Me.mnuReturnToTFMM.Name = "mnuReturnToTFMM"
+        Me.mnuReturnToTFMM.Size = New System.Drawing.Size(190, 22)
+        Me.mnuReturnToTFMM.Text = "Return to TFMM"
         '
         'mnuMaxCash
         '
@@ -463,12 +505,43 @@ Partial Class frmMain
         Me.mnuOnlyGameMissions.Size = New System.Drawing.Size(165, 22)
         Me.mnuOnlyGameMissions.Text = "Only {0} Missions"
         '
-        'TroubleshootingToolStripMenuItem
+        'SwitchGameToolStripMenuItem
         '
-        Me.TroubleshootingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowGameInfoToolStripMenuItem})
-        Me.TroubleshootingToolStripMenuItem.Name = "TroubleshootingToolStripMenuItem"
-        Me.TroubleshootingToolStripMenuItem.Size = New System.Drawing.Size(106, 20)
-        Me.TroubleshootingToolStripMenuItem.Text = "Troubleshooting"
+        Me.SwitchGameToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SS2ToolStripMenuItem, Me.T1GoldToolStripMenuItem, Me.T2ToolStripMenuItem, Me.T3ToolStripMenuItem})
+        Me.SwitchGameToolStripMenuItem.Name = "SwitchGameToolStripMenuItem"
+        Me.SwitchGameToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.SwitchGameToolStripMenuItem.Text = "Switch Game"
+        '
+        'SS2ToolStripMenuItem
+        '
+        Me.SS2ToolStripMenuItem.Name = "SS2ToolStripMenuItem"
+        Me.SS2ToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.SS2ToolStripMenuItem.Text = "System Shock 2"
+        '
+        'T1GoldToolStripMenuItem
+        '
+        Me.T1GoldToolStripMenuItem.Name = "T1GoldToolStripMenuItem"
+        Me.T1GoldToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.T1GoldToolStripMenuItem.Text = "Thief 1/Gold"
+        '
+        'T2ToolStripMenuItem
+        '
+        Me.T2ToolStripMenuItem.Name = "T2ToolStripMenuItem"
+        Me.T2ToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.T2ToolStripMenuItem.Text = "Thief 2"
+        '
+        'T3ToolStripMenuItem
+        '
+        Me.T3ToolStripMenuItem.Name = "T3ToolStripMenuItem"
+        Me.T3ToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.T3ToolStripMenuItem.Text = "Thief 3"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowGameInfoToolStripMenuItem, Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ShowGameInfoToolStripMenuItem
         '
@@ -476,17 +549,10 @@ Partial Class frmMain
         Me.ShowGameInfoToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ShowGameInfoToolStripMenuItem.Text = "Show Game Info"
         '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.AboutToolStripMenuItem.Text = "About && Tips"
         '
         'DataGridViewImageColumn1
@@ -505,36 +571,6 @@ Partial Class frmMain
         Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
         Me.DataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'btnPlay
-        '
-        Me.btnPlay.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.btnPlay.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnPlayOriginalMissions, Me.btnUninstallFanMission})
-        Me.btnPlay.Image = CType(resources.GetObject("btnPlay.Image"), System.Drawing.Image)
-        Me.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnPlay.Name = "btnPlay"
-        Me.btnPlay.Size = New System.Drawing.Size(127, 26)
-        Me.btnPlay.Text = "Play Fan Mission"
-        '
-        'btnPlayOriginalMissions
-        '
-        Me.btnPlayOriginalMissions.Name = "btnPlayOriginalMissions"
-        Me.btnPlayOriginalMissions.Size = New System.Drawing.Size(190, 22)
-        Me.btnPlayOriginalMissions.Text = "Play Original Missions"
-        '
-        'btnUninstallFanMission
-        '
-        Me.btnUninstallFanMission.Name = "btnUninstallFanMission"
-        Me.btnUninstallFanMission.Size = New System.Drawing.Size(190, 22)
-        Me.btnUninstallFanMission.Text = "Uninstall Fan Mission"
-        '
-        'btnSync
-        '
-        Me.btnSync.Image = CType(resources.GetObject("btnSync.Image"), System.Drawing.Image)
-        Me.btnSync.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnSync.Name = "btnSync"
-        Me.btnSync.Size = New System.Drawing.Size(98, 26)
-        Me.btnSync.Text = "Sync FM Files"
         '
         'frmMain
         '
@@ -597,8 +633,7 @@ Partial Class frmMain
     Friend WithEvents ViewToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuAllMissions As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuOnlyGameMissions As Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TroubleshootingToolStripMenuItem As Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ShowGameInfoToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SwitchGameToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataGridViewImageColumn1 As Windows.Forms.DataGridViewImageColumn
     Friend WithEvents DataGridViewImageColumn2 As Windows.Forms.DataGridViewImageColumn
     Friend WithEvents mnuMaxCash As Windows.Forms.ToolStripMenuItem
@@ -621,4 +656,10 @@ Partial Class frmMain
     Friend WithEvents cmnuUninstallFanMission As Windows.Forms.ToolStripMenuItem
     Friend WithEvents btnUninstallFanMission As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuUninstallFanMission As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SS2ToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents T1GoldToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents T2ToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents T3ToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShowGameInfoToolStripMenuItem As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuReturnToTFMM As Windows.Forms.ToolStripMenuItem
 End Class
