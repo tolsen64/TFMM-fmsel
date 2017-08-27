@@ -1,11 +1,8 @@
 ﻿Imports System.IO
 Imports System.Windows.Forms
-Imports Microsoft.WindowsAPICodePack.Dialogs
 Imports System.Globalization
 Imports System.ComponentModel
-Imports System.Text.Encoding
 Imports System.Collections.Specialized
-Imports System.Data.SQLite
 Imports SevenZip
 Imports System.Drawing
 
@@ -20,6 +17,7 @@ Public Class frmMain
 #If DEBUG Then
         'CultureInfo.CurrentCulture = New CultureInfo("el-GR")
 #End If
+        log("frmMain_Load", True)
         Application.EnableVisualStyles()
         Icon = System.Drawing.Icon.ExtractAssociatedIcon(Process.GetCurrentProcess.MainModule.FileName)
         btnPlay.Image = GetIcon(GameVersion)
@@ -42,6 +40,7 @@ Public Class frmMain
         mnuOnlyGameMissions.Checked = Not ViewAllMissions
         gridFMs.Columns.Item(cols.Ver).Visible = ViewAllMissions
 
+        log("GameVersion: " & GameVersion)
         If GameVersion = "T1" Then
             For Each s As String In My.Settings.T1OrigMissions
                 btnPlayOriginalMissions.DropDownItems.Add(s)
@@ -154,17 +153,20 @@ Public Class frmMain
     End Sub
 
     Private Sub mnuExitGame_Click(sender As Object, e As EventArgs) Handles mnuExitGame.Click
+        log("mnuExitGame_Click")
         gridFMs.EndEdit()
         Close()
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        log("AboutToolStripMenuItem_Click")
         With New AboutBox1
             .ShowDialog()
         End With
     End Sub
 
     Private Sub SettingsToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem1.Click
+        log("SettingsToolStripMenuItem1_Click")
         With New dlgSettings
             If .ShowDialog(Me) = DialogResult.OK Then
                 LoadFMSelCfg()
@@ -173,7 +175,9 @@ Public Class frmMain
         End With
     End Sub
 
-    Private Async Sub btnPlay_ButtonClick(sender As Object, e As EventArgs) Handles btnPlay.ButtonClick, mnuPlayFanMission.Click
+    Private Async Sub btnPlay_ButtonClick(sender As Object, e As EventArgs) Handles btnPlay.ButtonClick, mnuPlayFanMission.Click, cmnuPlayFanMission.Click
+        Dim name As String = If(TypeOf sender Is ToolStripSplitButton, CType(sender, ToolStripSplitButton).Name, CType(sender, ToolStripMenuItem).Name)
+        log("btnPlay_ButtonClick (" & name & ")")
         gridFMs.EndEdit()
         Await Task.Run(Sub()
                            If gridFMs.SelectedCells.Count > 0 Then
@@ -214,6 +218,7 @@ Public Class frmMain
 
     Private UnzipDestFolder As String = ""
     Private Sub UnzipMission(sourceZip As String, destFldr As String)
+        log("UnzipMission(""" & sourceZip & ", """ & destFldr & """")
         UnzipDestFolder = destFldr
 
         ToolStrip1.BeginInvoke(Sub()
@@ -275,6 +280,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ZipSaves()
+        log("ZipSaves")
         Dim lst As New List(Of String)
         If GameVersion = "SS2" Then
             For Each di As DirectoryInfo In New DirectoryInfo(Path.Combine(FMRootPath, GetGridValue(cols.InstallFolder))).GetDirectories("save_*")
@@ -305,6 +311,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ApplyMaxCash(UserCfgFile As String)
+        log("ApplyMaxCash(""" & UserCfgFile & """)")
         If (GameVersion = "T1" Or GameVersion = "T2") AndAlso cbMaxCash.Checked Then
             Dim UserCfgData As String = ""
             If File.Exists(UserCfgFile) Then UserCfgData = File.ReadAllText(UserCfgFile)
@@ -314,6 +321,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnUninstallFanMission_Click(sender As Object, e As EventArgs) Handles btnUninstallFanMission.Click, mnuUninstallFanMission.Click, cmnuUninstallFanMission.Click
+        Dim name As String = If(TypeOf sender Is ToolStripSplitButton, CType(sender, ToolStripSplitButton).Name, CType(sender, ToolStripMenuItem).Name)
+        log("btnUninstallFanMission_Click (" & name & ")")
         Dim MissionName As String = GetGridValue(cols.MissionName)
         If MissionName = "" Then MissionName = GetGridValue(cols.FileName)
         If MsgBox("Uninstall " & MissionName & "?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
@@ -324,6 +333,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnPlayOriginalMissions_Click(sender As Object, e As EventArgs) Handles btnPlayOriginalMissions.Click, mnuPlayOriginalMissions.Click, cmnuPlayOriginalMissions.Click
+        Dim name As String = If(TypeOf sender Is ToolStripSplitButton, CType(sender, ToolStripSplitButton).Name, CType(sender, ToolStripMenuItem).Name)
+        log("btnPlayOriginalMissions_Click (" & name & ")")
         gridFMs.EndEdit()
         ApplyMaxCash(Path.Combine(GamePath, UserCfg))
         FMSelReturnValue = eFMSelReturn.kSelFMRet_Cancel
@@ -331,6 +342,8 @@ Public Class frmMain
     End Sub
 
     Private Sub btnPlayOriginalMissions_DropDownItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles btnPlayOriginalMissions.DropDownItemClicked, mnuPlayOriginalMissions.DropDownItemClicked, cmnuPlayOriginalMissions.DropDownItemClicked
+        Dim name As String = If(TypeOf sender Is ToolStripSplitButton, CType(sender, ToolStripSplitButton).Name, CType(sender, ToolStripMenuItem).Name)
+        log("btnPlayOriginalMissions_DropDownItemClick (" & name & ") : " & e.ClickedItem.Text)
         Dim MissionIndex As Integer = e.ClickedItem.Text.Substring(0, 2).Trim
         gridFMs.EndEdit()
         ApplyMaxCash(Path.Combine(GamePath, UserCfg))
@@ -360,6 +373,7 @@ Public Class frmMain
     'End Sub
 
     Private Sub SyncInfoEventHandler(sender As Object, e As SyncInfoEventArgs)
+        log("SyncInfoEventHandler")
         If e.Index < e.FileCount - 1 Then
             ToolStrip1.BeginInvoke(Sub()
                                        btnSync.Visible = False
@@ -384,6 +398,7 @@ Public Class frmMain
     End Sub
 
     Private Sub AddDataRow(mi As BoycoT.TFMM.MissionInfo)
+        log("AddRowData(""" & mi.ArchiveFile.Name)
         If mi.ArchiveFile IsNot Nothing Then
             Dim dr As DataRow = dtMissions.NewRow
             dr("rowid") = mi.rowid
@@ -426,6 +441,7 @@ Public Class frmMain
     Dim lastRowId As Integer = -1
     Dim lastRow As Integer = -1
     Private Sub gridFMs_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridFMs.CellClick
+        log("gridFMs_CellClick : col=" & e.ColumnIndex & ", row=" & e.RowIndex)
         If gridFMs.SelectedCells.Count > 0 AndAlso gridFMs.SelectedCells(0).RowIndex <> lastRow Then
             If UserNoteDirty Then
                 Dim tp As TabPage = tabsDocs.TabPages.Item(tabsDocs.TabPages.Count - 1)
@@ -444,6 +460,7 @@ Public Class frmMain
     End Sub
 
     Private Sub SetMenuChoices()
+        log("SetMenuChoices")
         With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
             Dim GameVer As String = .Cells(cols.Ver).Value.ToString
             Dim GameIsMatch As Boolean = (GameVer = GameVersion)
@@ -463,6 +480,7 @@ Public Class frmMain
     End Sub
 
     Private Function GetIcon(GameVer As String) As System.Drawing.Bitmap
+        log("GetIcon(" & GameVer & ")")
         Select Case GameVer
             Case "SS2" : Return My.Resources.SS2
             Case "T1" : Return My.Resources.T1
@@ -473,6 +491,7 @@ Public Class frmMain
     End Function
 
     Private Sub gridFMs_CellMouseDown(sender As Object, e As DataGridViewCellMouseEventArgs) Handles gridFMs.CellMouseDown
+        log("gridFMs_CellMouseDown : col=" & e.ColumnIndex & ", row=" & e.RowIndex & ", button=" & e.Button.ToString)
         If e.Button = MouseButtons.Right Then
             gridFMs.Item(e.ColumnIndex, e.RowIndex).Selected = True
             gridFMs_CellClick(Nothing, New DataGridViewCellEventArgs(e.ColumnIndex, e.RowIndex))
@@ -481,6 +500,7 @@ Public Class frmMain
 
     Dim UserNoteDirty As Boolean = False
     Private Sub UpdateInfoTabs(rowid As Integer, nv As NameValueCollection)
+        log("UpdateInfoTabs")
         tabsDocs.TabPages.Clear()
         For Each key As String In nv
             Dim tp As New TabPage(key)
@@ -510,6 +530,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnSync_Click(sender As Object, e As EventArgs) Handles btnSync.Click
+        log("btnSync_Click")
         RemoveHandler dtMissions.RowChanged, AddressOf dtMissions_RowChanged
         btnSync.Visible = False
         SyncMissionFolders()
@@ -517,6 +538,7 @@ Public Class frmMain
 
     Private Sub mnuMissions_Click(sender As Object, e As EventArgs) Handles mnuAllMissions.Click, mnuOnlyGameMissions.Click
         Dim mi As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
+        log("mnuMissions_Click : " & mi.Name)
         If mi.Name = "mnuAllMissions" Then
             mnuAllMissions.Checked = True
             mnuOnlyGameMissions.Checked = False
@@ -532,6 +554,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ShowGameInfoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowGameInfoToolStripMenuItem.Click
+        log("ShowGameInfoToolStripMenuItem_Click")
         Dim gInfo As String =
         "AppPath: " & AppPath & vbCrLf &
         "GamePath: " & GamePath & vbCrLf &
@@ -543,6 +566,7 @@ Public Class frmMain
     End Sub
 
     Private Sub gridFMs_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridFMs.CellDoubleClick
+        log("gridFMs_CellDoubleClick : col=" & e.ColumnIndex & ", row=" & e.RowIndex)
         If e.RowIndex = -1 Then Exit Sub
         Select Case e.ColumnIndex
             Case cols.Directory
@@ -575,17 +599,21 @@ Public Class frmMain
     End Function
 
     Private Sub mnuMaxCash_Click(sender As Object, e As EventArgs) Handles mnuMaxCash.Click
+        log("mnuMaxCash_Click : checked=" & mnuMaxCash.Checked.ToString)
         cbMaxCash.Checked = mnuMaxCash.Checked
     End Sub
     Private Sub cbMaxCash_Click(sender As Object, e As EventArgs) Handles cbMaxCash.Click
+        log("cbMaxCash_Click : checked=" & cbMaxCash.Checked.ToString)
         mnuMaxCash.Checked = cbMaxCash.Checked
     End Sub
 
     Private Sub mnuReturnToTFMM_Click(sender As Object, e As EventArgs) Handles mnuReturnToTFMM.Click
+        log("mnuReturnToTFMM_Click : checked=" & mnuReturnToTFMM.Checked.ToString)
         cbReturnToTFMM.Checked = mnuReturnToTFMM.Checked
     End Sub
 
     Private Sub cbReturnToTFMM_Click(sender As Object, e As EventArgs) Handles cbReturnToTFMM.Click
+        log("cbReturnToTFMM_Click : checked=" & cbReturnToTFMM.Checked.ToString)
         mnuReturnToTFMM.Checked = cbReturnToTFMM.Checked
     End Sub
 
@@ -673,6 +701,15 @@ Public Class frmMain
             dropRow.Item(cols.Completed) = dragRow(cols.Completed)
             dropRow.AcceptChanges()
             SaveUserNote(dropRow.Item(cols.id), GetUserNotesFromDb(dragRow.Item(cols.id)))
+        End If
+    End Sub
+
+    Private Sub log(msg As String, Optional initialize As Boolean = False)
+        Dim logFile As String = Path.Combine(GetDLLPath, "TFMM.log")
+        If initialize Then
+            File.WriteAllText(logFile, Now.ToString & " - " & msg & vbCrLf)
+        Else
+            File.AppendAllText(logFile, Now.ToString & " - " & msg & vbCrLf)
         End If
     End Sub
 

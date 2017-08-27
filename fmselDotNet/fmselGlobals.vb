@@ -1,6 +1,5 @@
 ﻿Imports System.Globalization
 Imports System.Runtime.CompilerServices
-Imports System.Text.Encoding
 Imports System.IO.Compression
 Imports System.IO
 
@@ -21,6 +20,10 @@ Module tfmsGlobals
         InstallFolder
         Hash
     End Enum
+
+    Public Function GetDLLPath() As String
+        GetDLLPath = New FileInfo(New Uri(Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath).DirectoryName
+    End Function
 
     Public Function FormatFileSize(ByVal FileSizeBytes As Long) As String
         Dim sizeTypes() As String = {"b", "Kb", "Mb", "Gb"}

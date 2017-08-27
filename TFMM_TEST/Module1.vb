@@ -13,16 +13,16 @@ Module Module1
         Select Case Console.ReadKey.KeyChar
             Case "1"
                 si.FileName = "Thief.exe"
-                si.WorkingDirectory = "D:\Games\Thief GOLD"
+                si.WorkingDirectory = "C:\Users\TROM\2TB\Galaxy\Thief Gold"
             Case "2"
                 si.FileName = "Thief2.exe"
-                si.WorkingDirectory = "D:\Games\Thief 2 - The Metal Age"
+                si.WorkingDirectory = "C:\Users\TROM\2TB\Galaxy\Thief 2 - The Metal Age"
             Case "3"
                 si.FileName = "T3.exe"
-                si.WorkingDirectory = "D:\Games\Thief - Deadly Shadows\System"
+                si.WorkingDirectory = "C:\Users\TROM\2TB\Galaxy\Thief - Deadly Shadows\System"
             Case "S", "s"
                 si.FileName = "Shock2.exe"
-                si.WorkingDirectory = "D:\Games\System Shock 2"
+                si.WorkingDirectory = "C:\Users\TROM\2TB\Galaxy\System Shock 2"
             Case Else
                 Exit Sub
         End Select
