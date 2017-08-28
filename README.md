@@ -29,3 +29,5 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 11. Double-clicking in a file or folder column will open the file or folder with the default program.
 12. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
 13. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
+
+![Hit Counter](http://boycot.no-ip.com/HitCounter/default.aspx?id=GitHub/TFMM-fmsel "My Stupid Hit Counter!")
