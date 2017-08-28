@@ -27,6 +27,8 @@ Public Class frmMain
         mnuPlayOriginalMissions.Image = GetIcon(GameVersion)
         cmnuPlayOriginalMissions.Image = GetIcon(GameVersion)
         Text = GameName & " Fan Mission Selector"
+
+        If Not File.Exists(cfgFile) Then SettingsToolStripMenuItem1_Click(Nothing, Nothing)
         LoadFMSelCfg()
         InitializeDb()
 
