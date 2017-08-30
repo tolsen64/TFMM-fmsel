@@ -1,4 +1,5 @@
-# TFMM-fmsel
+# Thief Fan Mission Manager
+### A Thief 1,2,3 & System Shock 2 Mission Loader
 Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; Thief 2 and for the Sneaky Upgraded version of Thief 3. You need to have the .NET Framework 4.6.1 installed on your pc for this to work.
 
 [Discussion thread on TTLG.com](http://www.ttlg.com/forums/showthread.php?t=135810) | [Demo video of latest build](https://www.youtube.com/watch?v=ZwENQX5gC8g)
