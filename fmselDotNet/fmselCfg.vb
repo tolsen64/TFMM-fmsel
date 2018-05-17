@@ -4,6 +4,7 @@ Module fmselCfg
 
     Public cfgFile As String = Path.Combine(AppPath, "TFMM.cfg")
     Public lstFMDirs As New List(Of String)
+    Public OpenMissionNotesDefault As Boolean = False
     Public ReturnToTFMMDefault As Boolean = False
     Public MaxCashDefault As Boolean = False
     Public ViewAllMissions As Boolean = False
@@ -15,6 +16,7 @@ Module fmselCfg
     Public Sub SaveFMSelCfg()
         If File.Exists(cfgFile) Then File.Delete(cfgFile)
         Using sw As New StreamWriter(cfgFile)
+            sw.WriteLine("OpenMissionNotesDefault=" & OpenMissionNotesDefault)
             sw.WriteLine("ReturnToTFMMDefault=" & ReturnToTFMMDefault)
             sw.WriteLine("MaxCashDefault=" & MaxCashDefault)
             sw.WriteLine("ViewAllMissions=" & ViewAllMissions)
@@ -38,6 +40,7 @@ Module fmselCfg
                     Dim s As String() = sr.ReadLine.Split("="c)
                     If s.Length > 1 Then
                         Select Case s(0)
+                            Case "OpenMissionNotesDefault" : OpenMissionNotesDefault = CBool(s(1))
                             Case "ReturnToTFMMDefault" : ReturnToTFMMDefault = CBool(s(1))
                             Case "MaxCashDefault" : MaxCashDefault = CBool(s(1))
                             Case "ViewAllMissions" : ViewAllMissions = CBool(s(1))

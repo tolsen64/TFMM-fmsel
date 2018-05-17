@@ -69,6 +69,8 @@ Partial Class frmMain
         Me.mnuPlayFanMission = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuPlayOriginalMissions = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuUninstallFanMission = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mnuOpenMissionNotes = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuReturnToTFMM = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuMaxCash = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
@@ -426,7 +428,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.mnuUninstallFanMission, Me.mnuReturnToTFMM, Me.mnuMaxCash, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPlayFanMission, Me.mnuPlayOriginalMissions, Me.mnuUninstallFanMission, Me.ToolStripMenuItem3, Me.mnuOpenMissionNotes, Me.mnuReturnToTFMM, Me.mnuMaxCash, Me.ToolStripMenuItem1, Me.SettingsToolStripMenuItem1, Me.ToolStripMenuItem2, Me.mnuExitGame})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
@@ -448,6 +450,18 @@ Partial Class frmMain
         Me.mnuUninstallFanMission.Name = "mnuUninstallFanMission"
         Me.mnuUninstallFanMission.Size = New System.Drawing.Size(190, 22)
         Me.mnuUninstallFanMission.Text = "Uninstall Fan Mission"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(187, 6)
+        '
+        'mnuOpenMissionNotes
+        '
+        Me.mnuOpenMissionNotes.CheckOnClick = True
+        Me.mnuOpenMissionNotes.Name = "mnuOpenMissionNotes"
+        Me.mnuOpenMissionNotes.Size = New System.Drawing.Size(190, 22)
+        Me.mnuOpenMissionNotes.Text = "Open Mission Notes"
         '
         'mnuReturnToTFMM
         '
@@ -662,4 +676,6 @@ Partial Class frmMain
     Friend WithEvents T3ToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents ShowGameInfoToolStripMenuItem As Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuReturnToTFMM As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuOpenMissionNotes As Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As Windows.Forms.ToolStripSeparator
 End Class

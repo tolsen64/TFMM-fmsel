@@ -51,6 +51,7 @@ Partial Class dlgSettings
         Me.txtGameExeSS2 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkMaxCashDefault = New System.Windows.Forms.CheckBox()
+        Me.chkOpenMissionNotesDefault = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.grpSettings.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -65,7 +66,7 @@ Partial Class dlgSettings
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(277, 358)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(277, 372)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -93,7 +94,7 @@ Partial Class dlgSettings
         '
         'grpSettings
         '
-        Me.grpSettings.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.grpSettings.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.grpSettings.Controls.Add(Me.lstFMDirs)
         Me.grpSettings.Controls.Add(Me.btnAddDir)
         Me.grpSettings.Controls.Add(Me.btnRemoveDir)
@@ -187,7 +188,7 @@ Partial Class dlgSettings
         '
         Me.chkReturnToTFMMDefault.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.chkReturnToTFMMDefault.AutoSize = True
-        Me.chkReturnToTFMMDefault.Location = New System.Drawing.Point(12, 365)
+        Me.chkReturnToTFMMDefault.Location = New System.Drawing.Point(12, 379)
         Me.chkReturnToTFMMDefault.Name = "chkReturnToTFMMDefault"
         Me.chkReturnToTFMMDefault.Size = New System.Drawing.Size(141, 17)
         Me.chkReturnToTFMMDefault.TabIndex = 13
@@ -325,13 +326,25 @@ Partial Class dlgSettings
         '
         'chkMaxCashDefault
         '
+        Me.chkMaxCashDefault.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.chkMaxCashDefault.AutoSize = True
-        Me.chkMaxCashDefault.Location = New System.Drawing.Point(161, 365)
+        Me.chkMaxCashDefault.Location = New System.Drawing.Point(161, 379)
         Me.chkMaxCashDefault.Name = "chkMaxCashDefault"
         Me.chkMaxCashDefault.Size = New System.Drawing.Size(110, 17)
         Me.chkMaxCashDefault.TabIndex = 15
         Me.chkMaxCashDefault.Text = "Max Cash Default"
         Me.chkMaxCashDefault.UseVisualStyleBackColor = True
+        '
+        'chkOpenMissionNotesDefault
+        '
+        Me.chkOpenMissionNotesDefault.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.chkOpenMissionNotesDefault.AutoSize = True
+        Me.chkOpenMissionNotesDefault.Location = New System.Drawing.Point(12, 356)
+        Me.chkOpenMissionNotesDefault.Name = "chkOpenMissionNotesDefault"
+        Me.chkOpenMissionNotesDefault.Size = New System.Drawing.Size(243, 17)
+        Me.chkOpenMissionNotesDefault.TabIndex = 16
+        Me.chkOpenMissionNotesDefault.Text = "Open Mission Notes on Game Launch Default"
+        Me.chkOpenMissionNotesDefault.UseVisualStyleBackColor = True
         '
         'dlgSettings
         '
@@ -339,7 +352,8 @@ Partial Class dlgSettings
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(435, 399)
+        Me.ClientSize = New System.Drawing.Size(435, 413)
+        Me.Controls.Add(Me.chkOpenMissionNotesDefault)
         Me.Controls.Add(Me.chkMaxCashDefault)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.chkReturnToTFMMDefault)
@@ -391,4 +405,5 @@ Partial Class dlgSettings
     Friend WithEvents txtGameExeSS2 As Windows.Forms.TextBox
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents chkMaxCashDefault As Windows.Forms.CheckBox
+    Friend WithEvents chkOpenMissionNotesDefault As Windows.Forms.CheckBox
 End Class

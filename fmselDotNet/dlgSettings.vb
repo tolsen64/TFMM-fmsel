@@ -8,6 +8,7 @@ Public Class dlgSettings
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         fmselCfg.lstFMDirs = tmpLstFMDirs
+        OpenMissionNotesDefault = chkOpenMissionNotesDefault.Checked
         ReturnToTFMMDefault = chkReturnToTFMMDefault.Checked
         MaxCashDefault = chkMaxCashDefault.Checked
         SS2GameExe = txtGameExeSS2.Text
@@ -42,6 +43,7 @@ Public Class dlgSettings
         txtGameExeT3.Text = T3GameExe
         tmpLstFMDirs = fmselCfg.lstFMDirs
         lstFMDirs.DataSource = tmpLstFMDirs
+        chkOpenMissionNotesDefault.Checked = OpenMissionNotesDefault
         chkReturnToTFMMDefault.Checked = ReturnToTFMMDefault
         chkMaxCashDefault.Checked = MaxCashDefault
     End Sub

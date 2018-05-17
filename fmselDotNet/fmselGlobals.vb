@@ -39,6 +39,22 @@ Module tfmsGlobals
         Return Resp
     End Function
 
+    Public Sub OpenMissionNotes(rowid As Integer)
+        Dim fn As String = Path.Combine(AppPath, "MissionNotes" & rowid & ".txt")
+        Dim txt As String = GetUserNotesFromDb(rowid)
+        File.WriteAllText(fn, txt)
+        Process.Start(fn)
+    End Sub
+
+    Public Sub ImportMissionNotes()
+        For Each fi As FileInfo In New DirectoryInfo(AppPath).GetFiles("MissionNotes*.txt", SearchOption.TopDirectoryOnly)
+            Dim txt As String = File.ReadAllText(fi.FullName)
+            Dim rowid As Integer = CInt(fi.Name.Replace("MissionNotes", "").Replace(".txt", ""))
+            fi.Delete()
+            SaveUserNote(rowid, txt)
+        Next
+    End Sub
+
     ''' <summary>
     ''' Compresses supplied string into a GZipped byte array.
     ''' </summary>

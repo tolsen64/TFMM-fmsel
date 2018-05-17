@@ -181,15 +181,21 @@ Public Module fmsel
     ''' <returns></returns>
     Public Property FMRootPath As String
         Get
-            Dim s = Marshal.PtrToStringAnsi(FMSelData.sRootPath).Trim
-            If s = "" Then Return Path.Combine(GamePath, "FMs")
-            If s.StartsWith(".") Then Return Path.Combine(GamePath, s.TrimStart("."c))
-            If Not s.Contains(":") Then Return Path.Combine(GamePath, s)
-            Return s
+            If Not IsDebug Then
+                Dim s = Marshal.PtrToStringAnsi(FMSelData.sRootPath).Trim
+                If s = "" Then Return Path.Combine(GamePath, "FMs")
+                If s.StartsWith(".") Then Return Path.Combine(GamePath, s.TrimStart("."c))
+                If Not s.Contains(":") Then Return Path.Combine(GamePath, s)
+                Return s
+            Else
+                Return ""
+            End If
         End Get
         Set(value As String)
-            Dim tmp As Byte() = ASCII.GetBytes(value)
-            Marshal.Copy(tmp, 0, FMSelData.sRootPath, tmp.Length)
+            If Not IsDebug Then
+                Dim tmp As Byte() = ASCII.GetBytes(value)
+                Marshal.Copy(tmp, 0, FMSelData.sRootPath, tmp.Length)
+            End If
         End Set
     End Property
 
@@ -310,6 +316,8 @@ Public Module fmsel
             FMSelData.bForceLanguage = If(value, 1, 0)
         End Set
     End Property
+
+    Public Property IsDebug As Boolean = False
 
 #End Region
 

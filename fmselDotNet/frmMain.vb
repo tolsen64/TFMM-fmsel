@@ -11,6 +11,7 @@ Public Class frmMain
 
     Dim WithEvents cbMaxCash As CheckBox
     Dim WithEvents cbReturnToTFMM As CheckBox
+    Dim WithEvents cbOpenMissionNotes As CheckBox
     Private Const UserCfg As String = "USER.CFG"
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -31,6 +32,8 @@ Public Class frmMain
         If Not File.Exists(cfgFile) Then SettingsToolStripMenuItem1_Click(Nothing, Nothing)
         LoadFMSelCfg()
         InitializeDb()
+
+        ImportMissionNotes()
 
         gridFMs.Columns.RemoveAt(cols.Rating)
         gridFMs.Columns.Insert(cols.Rating, New RatingColumn With {.HeaderText = "Rating", .DataPropertyName = .HeaderText, .Name = "colRating", .SortMode = DataGridViewColumnSortMode.Automatic})
@@ -68,6 +71,9 @@ Public Class frmMain
         cbReturnToTFMM = New CheckBox With {.Text = "Return to TFMM"}
         ToolStrip1.Items.Add(New ToolStripControlHost(cbReturnToTFMM) With {.Alignment = ToolStripItemAlignment.Right})
 
+        cbOpenMissionNotes = New CheckBox With {.Text = "Open Mission Notes"}
+        ToolStrip1.Items.Add(New ToolStripControlHost(cbOpenMissionNotes) With {.Alignment = ToolStripItemAlignment.Right})
+
         SetMenuItemVisibility()
 
         If gridFMs.RowCount > 0 Then
@@ -86,6 +92,8 @@ Public Class frmMain
         Next
         cbReturnToTFMM.Checked = ReturnToTFMMDefault
         mnuReturnToTFMM.Checked = ReturnToTFMMDefault
+        cbOpenMissionNotes.Checked = OpenMissionNotesDefault
+        mnuOpenMissionNotes.Checked = OpenMissionNotesDefault
         If cbMaxCash IsNot Nothing Then
             cbMaxCash.Checked = MaxCashDefault
             mnuMaxCash.Checked = MaxCashDefault
@@ -185,6 +193,7 @@ Public Class frmMain
                            If gridFMs.SelectedCells.Count > 0 Then
                                With CType(gridFMs.Rows.Item(gridFMs.SelectedCells(0).RowIndex), DataGridViewRow)
                                    If .Cells(cols.Ver).Value = GameVersion Then
+                                       If cbOpenMissionNotes.Checked Then OpenMissionNotes(lastRowId)
                                        Dim sourceZip As String = Path.Combine(.Cells(cols.Directory).Value.ToString, .Cells(cols.FileName).Value.ToString)
                                        Dim destFldr As String = Path.Combine(FMRootPath, .Cells(cols.InstallFolder).Value.ToString)
                                        If Not Directory.Exists(destFldr) Then
@@ -224,7 +233,7 @@ Public Class frmMain
         UnzipDestFolder = destFldr
 
         ToolStrip1.BeginInvoke(Sub()
-                                   lblSyncProg.Text = ""
+                                   lblSyncProg.Text = "Preparing to install fan mission."
                                    pbSyncProg.Value = 0
                                    pbSyncProg.Visible = True
                                    lblSyncProg.Visible = True
@@ -400,6 +409,11 @@ Public Class frmMain
     End Sub
 
     Private Sub AddDataRow(mi As BoycoT.TFMM.MissionInfo)
+        If mi.ArchiveFile Is Nothing Then
+            'Debug.WriteLine("mi.ArchiveFile Is Nothing")
+            Exit Sub
+        End If
+        Debug.WriteLine(mi.ArchiveFile.Name)
         log("AddRowData(""" & mi.ArchiveFile.Name)
         If mi.ArchiveFile IsNot Nothing Then
             Dim dr As DataRow = dtMissions.NewRow
@@ -447,7 +461,7 @@ Public Class frmMain
         If gridFMs.SelectedCells.Count > 0 AndAlso gridFMs.SelectedCells(0).RowIndex <> lastRow Then
             If UserNoteDirty Then
                 Dim tp As TabPage = tabsDocs.TabPages.Item(tabsDocs.TabPages.Count - 1)
-                Dim txt As TextBox = CType(tp.Controls.Item(0), usrFinishScoreReview).txtMissionReviewNotes
+                Dim txt As TextBox = CType(tp.Controls.Item(0), TextBox)
                 SaveUserNote(lastRowId, txt.Text)
                 UserNoteDirty = False
             End If
@@ -516,18 +530,10 @@ Public Class frmMain
             End Select
             tabsDocs.TabPages.Add(tp)
         Next
-        Dim tpUserNotes As New TabPage("Notes/Score/Tags")
-        'Dim txtUserNotes As New TextBox With {.Multiline = True, .Dock = DockStyle.Fill, .Parent = tpUserNotes, .ScrollBars = ScrollBars.Vertical, .WordWrap = True}
-        Dim glFinishScoreReview As New usrFinishScoreReview() With {.Dock = DockStyle.Fill, .Parent = tpUserNotes}
-        With glFinishScoreReview
-            .txtMissionReviewNotes.Text = GetUserNotesFromDb(rowid)
-            AddHandler .txtMissionReviewNotes.TextChanged, Sub() UserNoteDirty = True
-            .cboYourScore.SelectedItem = CInt(GetGridValue(cols.Rating)) * 2
-            .ZipName = GetGridValue(cols.FileName)
-            .MissionName = GetGridValue(cols.MissionName)
-        End With
-        'txtUserNotes.Text = GetUserNotesFromDb(rowid)
-        'AddHandler txtUserNotes.TextChanged, Sub() UserNoteDirty = True
+        Dim tpUserNotes As New TabPage("User Notes")
+        Dim txtUserNotes As New TextBox With {.Multiline = True, .Dock = DockStyle.Fill, .Parent = tpUserNotes, .ScrollBars = ScrollBars.Vertical, .WordWrap = True}
+        txtUserNotes.Text = GetUserNotesFromDb(rowid)
+        AddHandler txtUserNotes.TextChanged, Sub() UserNoteDirty = True
         tabsDocs.TabPages.Add(tpUserNotes)
     End Sub
 
@@ -617,6 +623,16 @@ Public Class frmMain
     Private Sub cbReturnToTFMM_Click(sender As Object, e As EventArgs) Handles cbReturnToTFMM.Click
         log("cbReturnToTFMM_Click : checked=" & cbReturnToTFMM.Checked.ToString)
         mnuReturnToTFMM.Checked = cbReturnToTFMM.Checked
+    End Sub
+
+    Private Sub cbOpenMissionNotes_Click(sender As Object, e As EventArgs) Handles cbOpenMissionNotes.Click
+        log("cbOpenMissionNotes_Click : checked=" & cbOpenMissionNotes.Checked.ToString)
+        mnuOpenMissionNotes.Checked = cbOpenMissionNotes.Checked
+    End Sub
+
+    Private Sub mnuOpenMissionNotes_Click(sender As Object, e As EventArgs) Handles mnuOpenMissionNotes.Click
+        log("mnuOpenMissionNotes_Click : checked=" & mnuOpenMissionNotes.Checked.ToString)
+        cbOpenMissionNotes.Checked = mnuOpenMissionNotes.Checked
     End Sub
 
 #Region "SevenZip Event Handlers"
