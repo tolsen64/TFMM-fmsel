@@ -8,7 +8,7 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 
 ## INSTALLATION:
 
-1. Download the [archive](https://github.com/tolsen64/TFMM-fmsel/blob/master/Release.7z) from this page and unzip its contents to a folder of your choosing. Don't put it in a game folder, but put it in its own folder. All games will be configured to run this launcher.
+1. Download the [archive](https://github.com/tolsen64/TFMM-fmsel/raw/master/Release.7z) from this page and unzip its contents to a folder of your choosing. Don't put it in a game folder, but put it in its own folder. All games will be configured to run this launcher.
 2. Edit the cam_mod.ini file for each NewDark game to use this launcher instead of fmsel.
 3. Edit the SneakyOptions.ini file to use this launcher instead of fmsel.
 4. When the launcher is opened the first time, go into settings and define your fan mission archive folder(s).
