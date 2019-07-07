@@ -21,7 +21,7 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 2. Copy metadata from one mission to another by dragging the source row to the target row.
 3. If the detected mission type (Ver column) is incorrect, double-click to change it.
 4. Click on the stars in the Rating column to set your rating for each mission. Click the very left edge of the first star to set it to zero.
-5. Use the Completed column to keep track what what missions you've completed and what difficulty you completed. Choose yes if the mission does not have difficulty levels.
+5. Use the Status column to keep track what what missions are in progress or completed and what difficulty you completed. The older choices of No, Yes, Normal, Hard, Expert were left in for backward compatibility and will be removed in the future. Change any status' which use these and don't use them going forward.
 6. Use the User Notes tab for each mission to keep notes about that mission.
 7. Type in the Filter textbox to search by FileName, MissionName, and Author. Clear the textbox to show all missions.
 8. Click the Sync button after missions have been added or deleted from your archive folder to update the mission list.
