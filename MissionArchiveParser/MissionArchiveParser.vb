@@ -158,6 +158,7 @@ Public Module MissionArchiveParser
             Return mi
         Catch ex As Exception
             MsgBox(ex.Message & vbCrLf & ex.StackTrace)
+            Return Nothing
         End Try
     End Function
 
