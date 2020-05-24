@@ -10,7 +10,7 @@
     <AssemblyName>TFMM</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -98,6 +98,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -261,7 +262,7 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MissionArchiveParser\MissionArchiveParser\MissionArchiveParser.vbproj">
+    <ProjectReference Include="..\MissionArchiveParser\MissionArchiveParser.vbproj">
       <Project>{3c83e5e0-c132-4671-a789-d5b8e5e419b3}</Project>
       <Name>MissionArchiveParser</Name>
     </ProjectReference>
