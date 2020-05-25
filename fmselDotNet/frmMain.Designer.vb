@@ -142,7 +142,7 @@ Partial Class frmMain
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(106, 26)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(105, 26)
         Me.ToolStripLabel1.Text = "Total Mission Files:"
         '
         'lblTotalMissionFiles
@@ -159,7 +159,7 @@ Partial Class frmMain
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(90, 26)
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(89, 26)
         Me.ToolStripLabel2.Text = "Total Displayed:"
         '
         'lblTotalDisplayed
@@ -183,6 +183,7 @@ Partial Class frmMain
         '
         Me.txtFilter.AutoSize = False
         Me.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtFilter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtFilter.Name = "txtFilter"
         Me.txtFilter.Size = New System.Drawing.Size(150, 23)
         '

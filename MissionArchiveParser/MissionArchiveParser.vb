@@ -121,8 +121,8 @@ Public Module MissionArchiveParser
             Dim strLine As String = ""
             Dim rxTitleAuthor As New Regex("^\s*?(mission|level|)\s*?(?<param>name|title|author)(s|)\s*?:\s*?(?<value>.*?)\s*?$", RegexOptions.ExplicitCapture + RegexOptions.IgnoreCase + RegexOptions.Multiline)
 
-            mi.Title = mi.Title & vbNullString
-            mi.Author = mi.Author & vbNullString
+            mi.Title &= vbNullString
+            mi.Author &= vbNullString
 
             If mi.Author = "" Or mi.Title = "" Then
                 For Each info As InfoFile In mi.InfoFiles
@@ -196,7 +196,6 @@ Public Module MissionArchiveParser
 
     Private Function PatternExists(searchIn As Byte(), searchBytes As Byte(), Optional start As Integer = 0) As Boolean
         Dim found As Integer = -1
-        Dim matched As Boolean = False
         'only look at this if we have a populated search array and search bytes with a sensible start
         If searchIn.Length > 0 AndAlso searchBytes.Length > 0 AndAlso start <= (searchIn.Length - searchBytes.Length) AndAlso searchIn.Length >= searchBytes.Length Then
             'iterate through the array to be searched
@@ -205,7 +204,7 @@ Public Module MissionArchiveParser
                 If searchIn(i) = searchBytes(0) Then
                     If searchIn.Length > 1 Then
                         'multiple bytes to be searched we have to compare byte by byte
-                        matched = True
+                        Dim matched As Boolean = True
                         For y As Integer = 1 To searchBytes.Length - 1
                             If searchIn(i + y) <> searchBytes(y) Then
                                 matched = False

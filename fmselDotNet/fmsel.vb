@@ -1,9 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
-Imports RGiesecke.DllExport
 Imports System.Text.Encoding
 Imports System.IO
 Imports System.Reflection
-Imports System.Text.RegularExpressions
 
 Public Module fmsel
 
@@ -239,7 +237,7 @@ Public Module fmsel
     ''' <returns></returns>
     Public ReadOnly Property GameExited As Boolean
         Get
-            Return If(FMSelData.bExitedGame = 0, False, True)
+            Return FMSelData.bExitedGame <> 0
         End Get
     End Property
 
@@ -249,7 +247,7 @@ Public Module fmsel
     ''' <returns></returns>
     Public Property RunAfterGameExit As Boolean
         Get
-            Return (If(FMSelData.bRunAfterGame = 0, False, True))
+            Return (FMSelData.bRunAfterGame <> 0)
         End Get
         Set(value As Boolean)
             FMSelData.bRunAfterGame = If(value, 1, 0)
@@ -310,7 +308,7 @@ Public Module fmsel
     ''' <returns></returns>
     Public Property ForceFMLanguage As Boolean
         Get
-            Return If(FMSelData.bForceLanguage = 0, False, True)
+            Return FMSelData.bForceLanguage <> 0
         End Get
         Set(value As Boolean)
             FMSelData.bForceLanguage = If(value, 1, 0)

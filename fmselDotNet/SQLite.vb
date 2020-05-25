@@ -9,14 +9,14 @@ Module SQLite
     Public dtMissions As DataTable
     Public dvMissions As DataView
 
-    Private dbFile As String = Path.Combine(AppPath, "TFMM.db")
-    Private ConnStr As String = "DataSource=" & dbFile & ";Version=3;"
+    Private ReadOnly dbFile As String = Path.Combine(AppPath, "TFMM.db")
+    Private ReadOnly ConnStr As String = New SQLiteConnectionStringBuilder With {.DataSource = dbFile, .Version = 3}.ConnectionString
 
     Public Sub InitializeDb()
-        Using Conn As New SQLiteConnection(ConnStr)
-            Using Cmd As New SQLiteCommand
+        Using Conn As New SqliteConnection(ConnStr)
+            Conn.Open()
+            Using Cmd As New SqliteCommand
                 Cmd.Connection = Conn
-                Conn.Open()
                 Cmd.CommandText = My.Settings.CreateTableFMFiles
                 Cmd.ExecuteNonQuery()
                 Cmd.CommandText = My.Settings.CreateTableInfoFiles
@@ -51,7 +51,11 @@ Module SQLite
 
     Public Function dbExecuteQuery(cmdText As String) As DataTable
         dbExecuteQuery = New DataTable
-        Call New SQLiteDataAdapter(CreateDbCommand(cmdText)).Fill(dbExecuteQuery)
+        With CreateDbCommand(cmdText)
+            .Connection.Open()
+            dbExecuteQuery.Load(.ExecuteReader)
+            .Connection.Close()
+        End With
     End Function
 
     Public Function GetAllMissionsFromDb() As DataTable

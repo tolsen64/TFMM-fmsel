@@ -18,7 +18,8 @@ Public Class frmMain
 #If DEBUG Then
         'CultureInfo.CurrentCulture = New CultureInfo("el-GR")
 #End If
-        log("frmMain_Load", True)
+        If Not Directory.Exists(logDir) Then Directory.CreateDirectory(logDir)
+        log("frmMain_Load")
         Application.EnableVisualStyles()
         Icon = System.Drawing.Icon.ExtractAssociatedIcon(Process.GetCurrentProcess.MainModule.FileName)
         btnPlay.Image = GetIcon(GameVersion)
@@ -722,13 +723,18 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub log(msg As String, Optional initialize As Boolean = False)
-        Dim logFile As String = Path.Combine(GetDLLPath, "TFMM.log")
-        If initialize Then
-            File.WriteAllText(logFile, Now.ToString & " - " & msg & vbCrLf)
-        Else
-            File.AppendAllText(logFile, Now.ToString & " - " & msg & vbCrLf)
-        End If
+    Private Shared ReadOnly _syncObject = New Object
+    Private Shared ReadOnly logDir = Path.Combine(GetDLLPath, "Logs")
+
+    ''' <summary>
+    ''' Thread-Safe logging
+    ''' </summary>
+    ''' <param name="msg">The message to insert into the log file.</param>
+    Private Sub log(msg As String)
+        SyncLock _syncObject
+            Dim logFileName As String = $"{Now:yyyy-MM-dd}.log"
+            File.AppendAllText(Path.Combine(logDir, logFileName), $"{Now:hh:mm:ss tt} - {msg}{vbCrLf}")
+        End SyncLock
     End Sub
 
 #End Region
