@@ -123,6 +123,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="PluginLoader.vb" />
     <Compile Include="RatingColumn.vb" />
     <Compile Include="SQLite.vb" />
     <Compile Include="uncPath.vb" />
@@ -276,6 +277,10 @@
     <ProjectReference Include="..\MissionArchiveParser\MissionArchiveParser.vbproj">
       <Project>{3c83e5e0-c132-4671-a789-d5b8e5e419b3}</Project>
       <Name>MissionArchiveParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginContracts\PluginContracts.vbproj">
+      <Project>{1aaac394-95bf-401b-aa7e-46e89d0a1fa4}</Project>
+      <Name>PluginContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

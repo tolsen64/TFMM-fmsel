@@ -3,7 +3,6 @@ Imports System.Data.SQLite
 Imports map = BoycoT.TFMM.MissionArchiveParser
 Imports System.Collections.Specialized
 
-
 Module SQLite
 
     Public dtMissions As DataTable
@@ -25,7 +24,6 @@ Module SQLite
                 Cmd.ExecuteNonQuery()
                 Cmd.CommandText = My.Settings.CreateTableUserNotes
                 Cmd.ExecuteNonQuery()
-                Conn.Close()
             End Using
         End Using
         dtMissions = GetAllMissionsFromDb()

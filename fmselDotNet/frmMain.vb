@@ -1,13 +1,19 @@
-﻿Imports System.IO
-Imports System.Windows.Forms
-Imports System.Globalization
+﻿Imports System.Collections.Specialized
 Imports System.ComponentModel
-Imports System.Collections.Specialized
-Imports SevenZip
 Imports System.Drawing
+Imports System.Globalization
+Imports System.IO
+Imports System.Windows.Forms
+Imports PluginContracts
+Imports SevenZip
 
 Public Class frmMain
     Inherits Form
+
+    ''' <summary>
+    ''' Plugin Name, Plugin
+    ''' </summary>
+    Dim _Plugins As Dictionary(Of String, IPlugin)
 
     Dim WithEvents cbMaxCash As CheckBox
     Dim WithEvents cbReturnToTFMM As CheckBox
@@ -84,7 +90,35 @@ Public Class frmMain
 
         AddHandler dtMissions.RowChanged, AddressOf dtMissions_RowChanged
         AddHandler dvMissions.ListChanged, Sub(sndr As Object, ee As ListChangedEventArgs) UpdateCounts()
-        AddHandler fmselSync.SyncInfo, AddressOf SyncInfoEventHandler
+        AddHandler SyncInfo, AddressOf SyncInfoEventHandler
+
+        LoadPlugins()
+    End Sub
+
+    Private Sub LoadPlugins()
+        _Plugins = New Dictionary(Of String, IPlugin)
+
+        Dim PluginPath As String = Path.Combine(GetDLLPath, "Plugins")
+        Dim PluginDllSrc As New FileInfo(Path.Combine(GetDLLPath, "PluginContracts.dll"))
+        Dim PluginDllDest As New FileInfo(Path.Combine(PluginPath, "PluginContracts.dll"))
+
+        If Not Directory.Exists(PluginPath) Then Directory.CreateDirectory(PluginPath)
+        If Not PluginDllDest.Exists OrElse PluginDllDest.CreationTime < PluginDllSrc.CreationTime Then
+            PluginDllSrc.CopyTo(PluginDllDest.FullName)
+        End If
+
+        Dim Plugins As ICollection(Of IPlugin) = PluginLoader(Of IPlugin).LoadPlugins(PluginPath, "TFMM Plugin")
+
+        For Each Plugin As IPlugin In Plugins
+            log($"Loading Plugin: {Plugin.PluginName}")
+            _Plugins.Add(Plugin.PluginName, Plugin)
+
+            Dim u As UserControl = Plugin.GetUserControl
+            u.Dock = DockStyle.Fill
+            Dim t As TabPage = New TabPage(Plugin.PluginName)
+            t.Controls.Add(u)
+            tabsMain.TabPages.Add(t)
+        Next
     End Sub
 
     Private Sub SetMenuItemVisibility()
