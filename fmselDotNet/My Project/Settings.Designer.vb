@@ -89,8 +89,9 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("INSERT INTO FMFiles (Ver, Filename, FileSize, MissionName, Author, ReleaseDate, R"& _ 
-            "ating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES ('{0}','{1}'"& _ 
-            ",'{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')")>  _
+            "ating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES (@Ver,@FileN"& _ 
+            "ame,@FileSize,@MissionName,@Author,@ReleaseDate,@Rating,@Completed,@FileTypes,@D"& _ 
+            "irectory,@InstallFolder,@Hash)")>  _
         Public ReadOnly Property InsertMissionFile() As String
             Get
                 Return CType(Me("InsertMissionFile"),String)
@@ -137,7 +138,8 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("INSERT INTO InfoFiles VALUES ('{0}', '{1}', @bytes)")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("INSERT INTO InfoFiles (FMFilesId, Filename, Content) VALUES (@FMFilesId, @Filenam"& _ 
+            "e, @Content)")>  _
         Public ReadOnly Property InsertInfoFile() As String
             Get
                 Return CType(Me("InsertInfoFile"),String)

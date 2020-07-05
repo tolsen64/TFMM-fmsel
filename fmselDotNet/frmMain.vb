@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Windows.Forms
 Imports PluginContracts
 Imports SevenZip
+Imports System.Linq
 
 Public Class frmMain
     Inherits Form
@@ -108,17 +109,26 @@ Public Class frmMain
         End If
 
         Dim Plugins As ICollection(Of IPlugin) = PluginLoader(Of IPlugin).LoadPlugins(PluginPath, "TFMM Plugin")
+        Dim lst As New List(Of String)(dtMissions.AsEnumerable.Select(Function(row) CType(row("FileName"), String)))
+        If Plugins.Count > 0 Then
+            For Each Plugin As IPlugin In Plugins
+                log($"Loading Plugin: {Plugin.PluginName}")
+                Plugin.ExistingMissionList = lst
+                Plugin.FMFolders = lstFMDirs
+                Plugin.ParseMissionCallback = Sub(s As String)
+                                                  Dim mi As BoycoT.TFMM.MissionInfo = ParseMissionFile(s).Result
+                                                  MsgBox(mi.Title)
+                                              End Sub
 
-        For Each Plugin As IPlugin In Plugins
-            log($"Loading Plugin: {Plugin.PluginName}")
-            _Plugins.Add(Plugin.PluginName, Plugin)
+                _Plugins.Add(Plugin.PluginName, Plugin)
 
-            Dim u As UserControl = Plugin.GetUserControl
-            u.Dock = DockStyle.Fill
-            Dim t As TabPage = New TabPage(Plugin.PluginName)
-            t.Controls.Add(u)
-            tabsMain.TabPages.Add(t)
-        Next
+                Dim u As UserControl = Plugin.PluginWindow
+                u.Dock = DockStyle.Fill
+                Dim t As TabPage = New TabPage(Plugin.PluginName)
+                t.Controls.Add(u)
+                tabsMain.TabPages.Add(t)
+            Next
+        End If
     End Sub
 
     Private Sub SetMenuItemVisibility()

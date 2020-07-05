@@ -12,7 +12,7 @@
       <Value Profile="(Default)">CREATE TRIGGER IF NOT EXISTS FMDelete AFTER DELETE ON FMFiles FOR EACH ROW BEGIN DELETE FROM InfoFiles WHERE FMFilesId = OLD.rowid; END</Value>
     </Setting>
     <Setting Name="InsertMissionFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">INSERT INTO FMFiles (Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')</Value>
+      <Value Profile="(Default)">INSERT INTO FMFiles (Ver, Filename, FileSize, MissionName, Author, ReleaseDate, Rating, Completed, FileTypes, Directory, InstallFolder, Hash) VALUES (@Ver,@FileName,@FileSize,@MissionName,@Author,@ReleaseDate,@Rating,@Completed,@FileTypes,@Directory,@InstallFolder,@Hash)</Value>
     </Setting>
     <Setting Name="DeleteMissionFile" Type="System.String" Scope="Application">
       <Value Profile="(Default)">DELETE FROM FMFiles WHERE Directory = '{0}' AND Filename = '{1}'</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">SELECT Filename, Hash FROM FMFiles</Value>
     </Setting>
     <Setting Name="InsertInfoFile" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">INSERT INTO InfoFiles VALUES ('{0}', '{1}', @bytes)</Value>
+      <Value Profile="(Default)">INSERT INTO InfoFiles (FMFilesId, Filename, Content) VALUES (@FMFilesId, @Filename, @Content)</Value>
     </Setting>
     <Setting Name="SelectInfoFiles" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT Filename, Content FROM InfoFiles WHERE FMFilesId = {0}</Value>

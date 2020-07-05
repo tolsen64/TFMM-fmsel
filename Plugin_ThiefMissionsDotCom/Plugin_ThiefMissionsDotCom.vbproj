@@ -66,6 +66,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dlgChooseDownloadLocation.Designer.vb">
+      <DependentUpon>dlgChooseDownloadLocation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dlgChooseDownloadLocation.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Plugin.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -90,6 +96,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="dlgChooseDownloadLocation.resx">
+      <DependentUpon>dlgChooseDownloadLocation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -112,13 +121,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PluginContracts\PluginContracts.vbproj">
       <Project>{1aaac394-95bf-401b-aa7e-46e89d0a1fa4}</Project>
       <Name>PluginContracts</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

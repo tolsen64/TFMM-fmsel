@@ -74,33 +74,36 @@ Module SQLite
 
     Public Sub InsertNewMissionFile(ByRef mi As map.MissionInfo)
         Dim rslt As Integer = 0
-        With CreateDbCommand(String.Format(My.Settings.InsertMissionFile, {mi.Game.ToString, mi.ArchiveFile.Name.SQLify, mi.ArchiveFile.Length, mi.Title.SQLify, mi.Author.SQLify, mi.ReleaseDate.ToString("yyyy-MM-dd"), 0, "No", mi.FileTypes, mi.ArchiveFile.DirectoryName.SQLify, mi.InstallDirName, mi.MD5}))
-            .Connection.Open()
-            Try
-                rslt = .ExecuteNonQuery
-            Catch ex As SQLiteException
-                File.AppendText(Path.Combine(AppPath, "ERROR_LIST.txt")).WriteLine(Now.ToString & " - " & ex.Message)
-                File.AppendText(Path.Combine(AppPath, "SQL_ERROR_STATEMENTS.txt")).WriteLine(Now.ToString & " - " & .CommandText)
-            End Try
-            If rslt > 0 Then
-                .CommandText = "SELECT last_insert_rowid()"
-                rslt = .ExecuteScalar
-                mi.rowid = rslt
-                For Each f As map.InfoFile In mi.InfoFiles
-                    .Parameters.Clear()
-                    Dim bytes As Byte() = f.FileContent.Compress
-                    .CommandText = String.Format(My.Settings.InsertInfoFile, rslt, f.Filename.SQLify)
-                    .Parameters.Add("@bytes", DbType.Binary, bytes.Length).Value = bytes
-                    Try
-                        .ExecuteNonQuery()
-                    Catch ex As SQLiteException
-                        File.AppendText(Path.Combine(AppPath, "ERROR_LIST.txt")).WriteLine(Now.ToString & " - " & ex.Message)
-                        File.AppendText(Path.Combine(AppPath, "SQL_ERROR_STATEMENTS.txt")).WriteLine(Now.ToString & " - " & .CommandText)
-                    End Try
-                Next
-            End If
-            .Connection.Close()
-        End With
+        Using conn As New SQLiteConnection(ConnStr)
+            conn.Open()
+            Using cmd As New SQLiteCommand(My.Settings.InsertMissionFile, conn)
+                cmd.Parameters.Add("@Ver", DbType.String, 255).Value = mi.Game.ToString
+                cmd.Parameters.Add("@Filename", DbType.String, 255).Value = mi.ArchiveFile.Name
+                cmd.Parameters.Add("@FileSize", DbType.Int32).Value = mi.ArchiveFile.Length
+                cmd.Parameters.Add("@MissionName", DbType.String, 255).Value = mi.Title
+                cmd.Parameters.Add("@Author", DbType.String, 255).Value = mi.Author
+                cmd.Parameters.Add("@ReleaseDate", DbType.Date).Value = mi.ReleaseDate.ToString("yyyy-MM-dd")
+                cmd.Parameters.Add("@Rating", DbType.Int32).Value = 0
+                cmd.Parameters.Add("@Completed", DbType.String, 255).Value = "No"
+                cmd.Parameters.Add("@FileTypes", DbType.String, 255).Value = mi.FileTypes
+                cmd.Parameters.Add("@Directory", DbType.String, 255).Value = mi.ArchiveFile.DirectoryName
+                cmd.Parameters.Add("@InstallFolder", DbType.String, 255).Value = mi.InstallDirName
+                cmd.Parameters.Add("@Hash", DbType.String, 255).Value = mi.MD5
+                If cmd.ExecuteNonQuery > 0 Then
+                    cmd.CommandText = "SELECT last_insert_rowid()"
+                    mi.rowid = cmd.ExecuteScalar
+                    cmd.CommandText = My.Settings.InsertInfoFile
+                    For Each f As map.InfoFile In mi.InfoFiles
+                        Dim bytes As Byte() = f.FileContent.Compress
+                        cmd.Parameters.Clear()
+                        cmd.Parameters.Add("@FMFilesId", DbType.Int32).Value = mi.rowid
+                        cmd.Parameters.Add("@Filename", DbType.String, 255).Value = f.Filename
+                        cmd.Parameters.Add("@Content", DbType.Binary, bytes.Length).Value = bytes
+                        cmd.ExecuteNonQuery()
+                    Next
+                End If
+            End Using
+        End Using
     End Sub
 
     Public Function SelectInfoFiles(fmId As Integer) As NameValueCollection
