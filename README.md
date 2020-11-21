@@ -32,4 +32,4 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 13. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
 
 ![Hit Counter](http://boycot.no-ip.com/hc/?id=GitHub.TFMM-fmsel "My Stupid Hit Counter!")
-![Hit Counter](http://theboycot.com/hc/?id=test "My Stupid Hit Counter!")
+![Hit Counter](http://theboycot.com:8080/hc/?id=test "My Stupid Hit Counter!")
