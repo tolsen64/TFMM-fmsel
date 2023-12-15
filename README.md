@@ -31,4 +31,4 @@ Fan Mission Selector for the NewDark versions of System Shock 2, Thief 1 &amp; T
 12. Closing the program by using the Exit menu item or closing the main window will exit without launching the game.
 13. Don't forget to click Help / About & Tips for these tips and donation links to support development if you like the launcher.
 
-![Hit Counter](http://tolsen64.com:8081/api/hc/GitHub.TFMM-fmsel "My Stupid Hit Counter!")
+![Hit Counter](http://tolsen64.com:8080/hc/id=GitHub.TFMM-fmsel "My Stupid Hit Counter!")
